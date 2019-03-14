@@ -16,6 +16,16 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => res.render('pages/index'));
 app.get('/instructions', (req, res) => res.render('pages/instructions'));
 app.get('/references', (req, res) => res.render('pages/references'));
+app.get('/logout', async (req, res) => {
+	try {
+		//SOMETHING NEEDS TO HAPPEN HERE TO LOGOUT THE USER
+		res.render('pages/index'); 
+		
+	} catch (err) {
+		console.error(err);
+		res.send("Error " + err);
+	}
+});
 
 app.get('/db', async (req, res) => {
     try {
