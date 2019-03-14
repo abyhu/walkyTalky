@@ -26,6 +26,7 @@ h1, h2 {
 	margin: 1em auto 2em; }
 
 .navbar + .jumbotron {
+	background-color: none;
 	margin-top: -20px; }
 
 
