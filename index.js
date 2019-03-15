@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express(); 
 const path = require('path');
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 const PORT = process.env.PORT || 5000;
 
 const { Pool } = require('pg');
@@ -43,28 +45,26 @@ app.get('/db', async (req, res) => {
 	}
 });
 
-app.post('/createAccount', async (req, res) => {
-	
-		//SHOULD VERIFY THE TWO PASSWORDS ARE THE SAME
-		//SHOULD VERIFY THERE IS A USERNAME AND PASSWORD 
-		//SHOULD VERIFY THERE IS NO SQL INJECTION
-		const username = req.body.username;
-		console.log(username);
-		const password = req.body.password;
-		console.log(password);
+app.post('/createAccount', jsonParser, async (req, res) => {
 
-		const client = await pool.connect();
-		var sql = 'INSERT INTO app_user (username, password) VALUES ($1, $2)';
-		var values = [username, password];
-		client.query(sql, values, function (err, data) {
-			if (err) {
-				console.error(err);
-				res.send("Error " + err);
-			} else {
-				res.render('pages/index');
-			}
-		});
-		client.release();
+	//SHOULD VERIFY THE TWO PASSWORDS ARE THE SAME
+	//SHOULD VERIFY THERE IS A USERNAME AND PASSWORD 
+	//SHOULD VERIFY THERE IS NO SQL INJECTION
+	const username = req.body.username;
+	const password = req.body.password;
+
+	const client = await pool.connect();
+	var sql = 'INSERT INTO app_user (username, password) VALUES ($1, $2)';
+	var values = [username, password];
+	client.query(sql, values, function (err, res) {
+		if (err) {
+			console.error(err);
+			res.send("Error " + err);
+		} else {
+			res.render('pages/index');
+			client.release();
+		}
+	});
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
