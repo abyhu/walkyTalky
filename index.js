@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
+const jsonParser = bodyParser.json();
+const urlendedParser = bodyParser.urlencoded({extended:false});
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -45,7 +47,7 @@ app.get('/db', async (req, res) => {
 	}
 });
 
-app.post('/createAccount', bodyParser, async (req, res) => {
+app.post('/createAccount', urlencodedParser, async (req, res) => {
 
 	//SHOULD VERIFY THE TWO PASSWORDS ARE THE SAME
 	//SHOULD VERIFY THERE IS A USERNAME AND PASSWORD 
