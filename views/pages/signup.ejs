@@ -12,12 +12,14 @@
 		</div>
 		<div class="container">
 			<div class="col-md-6">
-				<form action='/login' method='/post'>
-					<h3>Welcome to Walky Talky, please login:</h3>
+				<form action='/createAccount' method='/post'>
+					<h3>Welcome to Walky Talky!</h3>
+					<p>To create an account please enter the following information:</p>
 					<p><label>Username: <input type='text' name='username'></label></p>
 					<p><label>Password: <input type='password' name='password'></label></p>
-					<button type='submit' name='login'>Login</button>
-					<p>New? <a href='/signup'>Sign up</a> to create an account.</p>
+					<p><label>Confirm Password: <input type='password' name='password'></label></p>
+					<button type='submit' name='signup'>Sign Up</button>
+					<span id="error"></span>
 				</form>
 			</div>
 		</div> <!-- row -->
