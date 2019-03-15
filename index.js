@@ -45,7 +45,7 @@ app.get('/db', async (req, res) => {
 	}
 });
 
-app.get('/createAccount', async (req, res) => {
+app.post('/createAccount', async (req, res) => {
 	try {
 		
 		const username = req.body.username;
