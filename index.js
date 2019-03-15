@@ -58,25 +58,23 @@ app.post('/createAccount', urlencodedParser, async (req, res) => {
 	try {
 		const username = req.body.username;
 		const password = req.body.password;
-	
+
 		const hashedPassword = await bcrypt.hash(password, saltRounds);
 		const client = await pool.connect();
 		var sql = 'INSERT INTO app_user (username, password) VALUES ($1::text, $2::text)';
 		var values = [username, hashedPassword];
 		client.query(sql, values, function (err, data) {
 			if (err) {
-			console.error(err);
-			res.send("Error " + err);
-		} else {
-			res.render('pages/index');
-			client.release();
-		}
-	});
+				console.error(err);
+				res.send("Error " + err);
+			} else {
+				res.render('pages/index');
+				client.release();
+			}
+		});
 	} catch {
 		res.send("Error " + err);
 	}
-	
-		
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
