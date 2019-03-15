@@ -12,7 +12,7 @@ const pool = new Pool({
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlended({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -32,7 +32,7 @@ app.get('/logout', async (req, res) => {
 	}
 });
 
-app.get('/db', async (req, res) => {
+app.get('/db', function (req, res) => {
 	try {
 		const client = await pool.connect();
 		const result = await client.query('SELECT * FROM test_table');
