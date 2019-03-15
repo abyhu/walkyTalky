@@ -55,7 +55,7 @@ app.post('/createAccount', jsonParser, async (req, res) => {
 
 	const client = await pool.connect();
 	var sql = 'INSERT INTO app_user (username, password) VALUES ($1::text, $2::text)';
-	var values = [username, password];
+	var values = [JSON.stringify(username), JSON.stringify(password)];
 	client.query(sql, values, function (err, data) {
 		if (err) {
 			console.error(err);
