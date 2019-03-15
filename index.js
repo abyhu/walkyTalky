@@ -51,7 +51,17 @@ app.post('/createAccount', async (req, res) => {
 		const username = req.body.username;
 		const password = req.body.password;
 
-		res.send(JSON.stringify({'username': username, 'password': password}));
+		const client = await pool.connect();
+		var sql = 'INSERT INTO app_user (username, password) VALUES (?, ?)';
+		client.query(sql, [username, password], function (err, data) {
+			if (err) {
+				console.error(err);
+				res.send("Error " + err);
+			} else {
+				res.render('pages/index');
+			}
+		});
+		client.release();
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
