@@ -44,7 +44,7 @@ app.get('/db', async (req, res) => {
 });
 
 app.post('/createAccount', async (req, res) => {
-	try {
+	
 		//SHOULD VERIFY THE TWO PASSWORDS ARE THE SAME
 		//SHOULD VERIFY THERE IS A USERNAME AND PASSWORD 
 		//SHOULD VERIFY THERE IS NO SQL INJECTION
@@ -52,13 +52,16 @@ app.post('/createAccount', async (req, res) => {
 		const password = req.body.password;
 
 		const client = await pool.connect();
-		const result = await client.query('INSERT INTO app_user (username, password) VALUES ('+ username+', '+password+')');
-		res.render('pages/index');
+		var sql = 'INSERT INTO app_user (username, password) VALUES (?, ?)';
+		client.query(sql, [username, password], function (err, data) {
+			if (err) {
+				console.error(err);
+				res.send("Error " + err);
+			} else {
+				res.render('pages/index');
+			}
+		});
 		client.release();
-	} catch (err) {
-		console.error(err);
-		res.send("Error " + err);
-	}
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
