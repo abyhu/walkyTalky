@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
 const jsonParser = bodyParser.json();
-const urlendedParser = bodyParser.urlencoded({extended:false});
+const urlencodedParser = bodyParser.urlencoded({extended:false});
 
 const { Pool } = require('pg');
 const pool = new Pool({
