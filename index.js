@@ -45,9 +45,11 @@ app.get('/db', async (req, res) => {
 	}
 });
 
-app.post('/createAccount', async (req, res) => {
+app.post('/createAccount', function (req, res) => {
 	try {
-		
+		//SHOULD VERIFY THE TWO PASSWORDS ARE THE SAME
+		//SHOULD VERIFY THERE IS A USERNAME AND PASSWORD 
+		//SHOULD VERIFY THERE IS NO SQL INJECTION
 		const username = req.body.username;
 		const password = req.body.password;
 
