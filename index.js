@@ -45,7 +45,7 @@ app.get('/db', async (req, res) => {
 	}
 });
 
-app.post('/createAccount', function (req, res) => {
+app.post('/createAccount', async (req, res) => {
 	try {
 		//SHOULD VERIFY THE TWO PASSWORDS ARE THE SAME
 		//SHOULD VERIFY THERE IS A USERNAME AND PASSWORD 
