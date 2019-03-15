@@ -52,7 +52,7 @@ app.get('/createAccount', async (req, res) => {
 		const password = req.body.password;
 
 		const client = await pool.connect();
-		const result = await client.query('INSERT INTO app_user (username, password) VALUES (' + username + ')');
+		const result = await client.query('INSERT INTO app_user (username, password) VALUES ('+ username+', '+password+')');
 		res.render('pages/index');
 		client.release();
 	} catch (err) {
