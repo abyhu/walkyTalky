@@ -47,11 +47,13 @@ app.get('/db', async (req, res) => {
 
 app.get('/createAccount', async (req, res) => {
 	try {
+		
+		const username = req.body.username;
+		const password = req.body.password;
 
 		const client = await pool.connect();
-		const result = await client.query('SELECT * FROM test_table');
-		const results = { 'results': (result) ? result.rows : null};
-		res.render('pages/db', results);
+		const result = await client.query('INSERT INTO app_user (username, password) VALUES (' + username + ')');
+		res.render('pages/index');
 		client.release();
 	} catch (err) {
 		console.error(err);
