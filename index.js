@@ -14,7 +14,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => res.render('pages/index'));
-app.get('/signup', (req, res) => res.render('pages/singup'));
+app.get('/signup', (req, res) => res.render('pages/signup'));
 app.get('/instructions', (req, res) => res.render('pages/instructions'));
 app.get('/references', (req, res) => res.render('pages/references'));
 app.get('/logout', async (req, res) => {
