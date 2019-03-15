@@ -12,7 +12,8 @@ const pool = new Pool({
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -45,7 +46,7 @@ app.get('/db', async (req, res) => {
 	}
 });
 
-app.post('/createAccount', jsonParser, async (req, res) => {
+app.post('/createAccount', bodyParser, async (req, res) => {
 
 	//SHOULD VERIFY THE TWO PASSWORDS ARE THE SAME
 	//SHOULD VERIFY THERE IS A USERNAME AND PASSWORD 
@@ -55,7 +56,7 @@ app.post('/createAccount', jsonParser, async (req, res) => {
 
 	const client = await pool.connect();
 	var sql = 'INSERT INTO app_user (username, password) VALUES ($1::text, $2::text)';
-	var values = [JSON.stringify(username), JSON.stringify(password)];
+	var values = [username, password];
 	client.query(sql, values, function (err, data) {
 		if (err) {
 			console.error(err);
