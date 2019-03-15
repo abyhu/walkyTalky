@@ -48,12 +48,13 @@ app.post('/createAccount', async (req, res) => {
 		//SHOULD VERIFY THE TWO PASSWORDS ARE THE SAME
 		//SHOULD VERIFY THERE IS A USERNAME AND PASSWORD 
 		//SHOULD VERIFY THERE IS NO SQL INJECTION
-		const username = JSON.stringify(req.body.username);
-		const password = JSON.stringify(req.body.password);
+		const username = req.body.username;
+		const password = req.body.password;
 
 		const client = await pool.connect();
-		var sql = 'INSERT INTO app_user (username, password) VALUES (?, ?)';
-		client.query(sql, [username, password], function (err, data) {
+		var sql = 'INSERT INTO app_user (username, password) VALUES ($1, $2)';
+		var values = [username, password];
+		client.query(sql, values, function (err, data) {
 			if (err) {
 				console.error(err);
 				res.send("Error " + err);
