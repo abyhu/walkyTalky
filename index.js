@@ -2,6 +2,8 @@ const express = require('express');
 const app = express(); 
 const path = require('path');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const PORT = process.env.PORT || 5000;
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({extended:false});
@@ -52,12 +54,14 @@ app.post('/createAccount', urlencodedParser, async (req, res) => {
 	//SHOULD VERIFY THE TWO PASSWORDS ARE THE SAME
 	//SHOULD VERIFY THERE IS A USERNAME AND PASSWORD 
 	//SHOULD VERIFY THERE IS NO SQL INJECTION
+	//PASSWORD NEEDS HASHED AND SALTED
 	const username = req.body.username;
 	const password = req.body.password;
-
+	
+	const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
 	const client = await pool.connect();
 	var sql = 'INSERT INTO app_user (username, password) VALUES ($1::text, $2::text)';
-	var values = [username, password];
+	var values = [username, hashedPassword];
 	client.query(sql, values, function (err, data) {
 		if (err) {
 			console.error(err);
