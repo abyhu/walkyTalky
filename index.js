@@ -49,7 +49,9 @@ app.post('/createAccount', async (req, res) => {
 		//SHOULD VERIFY THERE IS A USERNAME AND PASSWORD 
 		//SHOULD VERIFY THERE IS NO SQL INJECTION
 		const username = req.body.username;
+		console.log(username);
 		const password = req.body.password;
+		console.log(password);
 
 		const client = await pool.connect();
 		var sql = 'INSERT INTO app_user (username, password) VALUES ($1, $2)';
