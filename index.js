@@ -1,15 +1,19 @@
 const express = require('express');
 const app = express(); 
 const path = require('path');
+const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true
+	connectionString: process.env.DATABASE_URL,
+	ssl: true
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlended({ extended: true }));
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -21,25 +25,39 @@ app.get('/logout', async (req, res) => {
 	try {
 		//SOMETHING NEEDS TO HAPPEN HERE TO LOGOUT THE USER
 		res.render('pages/index'); 
-		
+
 	} catch (err) {
 		console.error(err);
 		res.send("Error " + err);
 	}
 });
 
-app.get('/db', async (req, res) => {
-    try {
-      const client = await pool.connect();
-      const result = await client.query('SELECT * FROM test_table');
-      const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results);
-      client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
-    }
-  });
+app.get('/db', function (req, res) => {
+	try {
+		const client = await pool.connect();
+		const result = await client.query('SELECT * FROM test_table');
+		const results = { 'results': (result) ? result.rows : null};
+		res.render('pages/db', results);
+		client.release();
+	} catch (err) {
+		console.error(err);
+		res.send("Error " + err);
+	}
+});
+
+app.get('/createAccount', async (req, res) => {
+	try {
+
+		const client = await pool.connect();
+		const result = await client.query('SELECT * FROM test_table');
+		const results = { 'results': (result) ? result.rows : null};
+		res.render('pages/db', results);
+		client.release();
+	} catch (err) {
+		console.error(err);
+		res.send("Error " + err);
+	}
+});
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
