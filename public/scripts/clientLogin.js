@@ -5,9 +5,9 @@ $('#signupForm').submit(function(event) {
 	
 	var isVerified = verify(form_data);
 	
-	$.post(post_url, form_data, function(response) {
-		$('#server-results').html(response);
-	});
+	//$.post(post_url, form_data, function(response) {
+	//	$('#server-results').html(response);
+	//});
 });
 
 function isVerified(form_data) {
