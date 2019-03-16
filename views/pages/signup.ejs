@@ -3,6 +3,7 @@
 	<head>
 		<% include ../partials/header.ejs %>
 	</head>
+	<script src='clientLogin.js'></script>
 	<body>
 		<% include ../partials/nav.ejs %>
 		<div class="jumbotron text-center">
@@ -12,13 +13,13 @@
 		</div>
 		<div class="container">
 			<div class="col-md-6">
-				<form action='/createAccount' method='POST'>
+				<form action='/createAccount' method='POST' id='signupForm'>
 					<h3>Welcome to Walky Talky!</h3>
 					<p>To create an account please enter the following information:</p>
 					<p><label>Create Username: <input type='text' name='username'></label></p>
 					<p><label>Select Password: <input type='password' name='password'></label></p>
 					<p><label>Confirm Password: <input type='password' name='confirm'></label></p>
-					<button type='submit' name='signup'>Sign Up</button>
+					<input type='submit' name='signup' value='Sign Up'>
 					<span id="error"></span>
 				</form>
 			</div>
