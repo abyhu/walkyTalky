@@ -95,9 +95,7 @@ app.post('/login', urlencodedParser, async (req, res) => {
 		   		res.render('pages/walkyTalky');	 
 			}
 		}); 
-	});
-	
-	
+	}	
 });
 
 
