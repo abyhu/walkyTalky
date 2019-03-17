@@ -33,8 +33,9 @@
 			form_object['username'] = $('#username').val();
 			form_object['password'] = $('#password').val();
 			form_object['confirm'] = $('#confirm').val();
+			var isVerified = verify(form_object);
 			var form_data = JSON.stringify(form_object);
-			var isVerified = verify(form_data);
+			
 			
 			
 			if(isVerified) {
@@ -44,9 +45,9 @@
 			}			
 		});
 
-		function verify(form_data) {
-			console.log(form_data);
-			if (form_data['confirm'] == form_data['password'] && form_data['username'] != null) {
+		function verify(form_object) {
+			console.log(form_object);
+			if (form_object['confirm'] == form_object['password'] && form_object['username'] != null) {
 				return true;
 			} else {
 				$('#error').text('There is a problem with your signup. Please try again.');
