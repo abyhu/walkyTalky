@@ -40,7 +40,9 @@
 				$.post('/createAccount', form_data, function(response) {
 				$('#server-results').html(response);
 			});
-			}			
+			} else {
+				return false;
+			}
 		});
 
 		function verify(form_object) {
