@@ -28,7 +28,7 @@
 		
 		<script>
 		$('#signupForm').submit(function(event) {
-			//event.preventDefault(); 
+			event.preventDefault(); 
 			var form_object = {};
 			form_object['username'] = $('#username').val();
 			form_object['password'] = $('#password').val();
