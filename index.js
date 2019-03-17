@@ -88,8 +88,8 @@ app.post('/login', urlencodedParser, async (req, res) => {
 			client.release();
 			console.log(data);
 			
-			if(hashedPassword == data[0].password) {
-				var param = data[0].id; 
+			if(hashedPassword == data['password']) {
+				var param = data['id']; 
 			   	res.render('pages/walkyTalky');
 			} else {
 				res.send("Error: The passwords do not match.");
