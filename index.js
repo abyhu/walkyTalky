@@ -69,5 +69,31 @@ app.post('/createAccount', urlencodedParser, async (req, res) => {
 	});
 });
 
+app.post('/login', urlencodedParser, async (req, res) => {
+
+	//SHOULD VERIFY THERE IS NO SQL INJECTION
+	const username = req.body.username;
+	const password = req.body.password;
+	
+	const hashedPassword = bcrypt.hashSync(password);
+	const client = await pool.connect();
+	var sql = 'SELECT id, username, password FROM app_user WHERE username=$1::text';
+	var values = [username];
+	client.query(sql, values, function (err, data) {
+		if (err) {
+			console.error(err);
+			res.send("Error " + err);
+			//SHOULD RETURN AN ERROR TO THE USER TO SEE
+		} else {
+			client.release();
+			console.log(data);
+			//res.render('pages/index');
+		}
+	});
+	
+	
+});
+
+
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
