@@ -92,7 +92,7 @@ app.post('/login', urlencodedParser, async (req, res) => {
 				} else {
 					var param = data.rows[0]['id']; 
 					//START A SESSION WITH ID
-		   			res.render('pages/walkyTalky?id=' + param);	 
+		   			res.render('pages/walkyTalky');	 
 				}
 			}); 
 		}	
