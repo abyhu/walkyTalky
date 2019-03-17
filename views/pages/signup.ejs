@@ -39,6 +39,7 @@
 			if(isVerified) {
 				$.post('/createAccount', form_data, function(response) {
 				$('#server-results').html(response);
+				return true; 
 			});
 			} else {
 				return false;
