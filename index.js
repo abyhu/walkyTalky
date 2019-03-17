@@ -74,8 +74,7 @@ app.post('/login', urlencodedParser, async (req, res) => {
 	//SHOULD VERIFY THERE IS NO SQL INJECTION
 	const username = req.body.username;
 	const password = req.body.password;
-	
-	const hashedPassword = bcrypt.hashSync(password);
+
 	const client = await pool.connect();
 	var sql = 'SELECT id, username, password FROM app_user WHERE username=$1::text';
 	var values = [username];
@@ -88,13 +87,14 @@ app.post('/login', urlencodedParser, async (req, res) => {
 			client.release();
 			console.log(data);
 			
-			if(hashedPassword == data['password']) {
-				var param = data['id']; 
-			   	res.render('pages/walkyTalky');
-			} else {
+		bcrypt.compare(password, data.rows[0]['password'], function(err, res) {
+			if (err) {
 				res.send("Error: The passwords do not match." + data + " " + hashedPassword + " " + data.rows[0]['password']);
+			} else {
+				var param = data['id']; 
+		   		res.render('pages/walkyTalky');	 
 			}
-		}
+		}); 
 	});
 	
 	
