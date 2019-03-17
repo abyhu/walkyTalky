@@ -20,7 +20,7 @@
 					<p><label>Create Username: <input type='text' name='username'></label></p>
 					<p><label>Select Password: <input type='password' name='password'></label></p>
 					<p><label>Confirm Password: <input type='password' name='confirm'></label></p>
-					<input type='submit' name='signup' value='Sign Up'>
+					<input type='submit' name='signup' value='Sign Up'><br>
 					<span id="error"></span>
 				</form>
 			</div>
@@ -34,9 +34,9 @@
 
 			var isVerified = verify(form_data);
 
-			//$.post(post_url, form_data, function(response) {
-			//	$('#server-results').html(response);
-			//});
+			$.post(post_url, form_data, function(response) {
+				$('#server-results').html(response);
+			});
 		});
 
 		function verify(form_data) {
