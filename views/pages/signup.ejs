@@ -14,12 +14,12 @@
 		</div>
 		<div class="container">
 			<div class="col-md-6">
-				<form action='/createAccount' method='post' id='signupForm'>
+				<form>
 					<h3>Welcome to Walky Talky!</h3>
 					<p>To create an account please enter the following information:</p>
-					<p><label>Create Username: <input type='text' name='username'></label></p>
-					<p><label>Select Password: <input type='password' name='password'></label></p>
-					<p><label>Confirm Password: <input type='password' name='confirm'></label></p>
+					<p><label>Create Username: <input type='text' name='username' id='username'></label></p>
+					<p><label>Select Password: <input type='password' name='password' id='password'></label></p>
+					<p><label>Confirm Password: <input type='password' name='confirm' id='confirm'></label></p>
 					<input type='submit' name='signup' value='Sign Up'><br>
 					<span id="error"></span>
 				</form>
@@ -28,18 +28,17 @@
 		
 		<script>
 		$('#signupForm').submit(function(event) {
-			event.preventDefault(); 
-			var post_username = $(this).attr('action');
+			//event.preventDefault(); 
 			var form_object = {};
-			$('#signupForm').forEach(function(value, key) {
-				form_object[key] = value; 
-			});
+			form_object['username'] = $('#username').val();
+			form_object['password'] = $('#password').val();
+			form_object['confirm'] = $('#confirm').val();
 			var form_data = JSON.stringify(form_object);
 			var isVerified = verify(form_data);
 			
 			
 			if(isVerified) {
-				$.post(post_url, form_data, function(response) {
+				$.post('/createAccount', form_data, function(response) {
 				$('#server-results').html(response);
 			});
 			}			
