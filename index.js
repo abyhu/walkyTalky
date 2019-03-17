@@ -87,15 +87,16 @@ app.post('/login', urlencodedParser, async (req, res) => {
 			client.release();
 			console.log(data);
 			
-		bcrypt.compare(password, data.rows[0]['password'], function(err, res) {
-			if (err) {
-				res.send("Error: The passwords do not match." + data + " " + hashedPassword + " " + data.rows[0]['password']);
-			} else {
-				var param = data['id']; 
-		   		res.render('pages/walkyTalky');	 
-			}
-		}); 
-	}	
+			bcrypt.compare(password, data.rows[0]['password'], function(err, res) {
+				if (err) {
+					res.send("Error: The passwords do not match." + data + " " + hashedPassword + " " + data.rows[0]['password']);
+				} else {
+					var param = data['id']; 
+		   			res.render('pages/walkyTalky');	 
+				}
+			}); 
+		}	
+	});
 });
 
 
