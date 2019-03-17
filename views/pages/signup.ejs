@@ -30,7 +30,11 @@
 		$('#signupForm').submit(function(event) {
 			event.preventDefault(); 
 			var post_username = $(this).attr('action');
-			var form_data = JSON.stringify($(this).serialize());
+			var form_object = {};
+			$(this).forEach(function(value, key) {
+				form_object[key] = value; 
+			});
+			var form_data = JSON.stringify(form_object);
 			var isVerified = verify(form_data);
 			
 			
