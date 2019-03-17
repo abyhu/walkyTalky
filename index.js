@@ -89,7 +89,7 @@ app.post('/login', urlencodedParser, async (req, res) => {
 			
 			bcrypt.compare(password, data.rows[0]['password'], function(err, result) {
 				if (!result) {
-					res.send("Error: The passwords do not match." + data + " " + hashedPassword + " " + data.rows[0]['password']);
+					res.send("Error: The passwords do not match.");
 				} else {
 					var param = data['id']; 
 					//START A SESSION WITH ID
