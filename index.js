@@ -92,7 +92,7 @@ app.post('/login', urlencodedParser, async (req, res) => {
 				var param = data['id']; 
 			   	res.render('pages/walkyTalky');
 			} else {
-				res.send("Error: The passwords do not match." + hashedPassword + " " + data['password']);
+				res.send("Error: The passwords do not match." + data + " " + hashedPassword + " " + data['password']);
 			}
 		}
 	});
