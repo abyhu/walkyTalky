@@ -80,7 +80,6 @@ app.post('/login', urlencodedParser, async (req, res) => {
 	var values = [username];
 	client.query(sql, values, function (err, data) {
 		if (err) {
-			console.error(err);
 			res.send("Error " + err);
 			//SHOULD RETURN AN ERROR TO THE USER TO SEE
 		} else {
@@ -91,9 +90,9 @@ app.post('/login', urlencodedParser, async (req, res) => {
 				if (!result) {
 					res.send("Error: The passwords do not match.");
 				} else {
-					var param = data['id']; 
+					var param = data.rows[0]['id']; 
 					//START A SESSION WITH ID
-		   			res.render('pages/walkyTalky');	 
+		   			res.render('pages/walkyTalky?id=' + param);	 
 				}
 			}); 
 		}	
