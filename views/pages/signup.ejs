@@ -30,9 +30,8 @@
 		$('#signupForm').submit(function(event) {
 			event.preventDefault(); 
 			var post_username = $(this).attr('action');
+			var isVerified = verify(this);
 			var form_data = $(this).serialize();
-
-			var isVerified = verify(form_data);
 			
 			if(isVerified) {
 				$.post(post_url, form_data, function(response) {
