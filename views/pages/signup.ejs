@@ -33,10 +33,8 @@
 			form_object['username'] = $('#username').val();
 			form_object['password'] = $('#password').val();
 			form_object['confirm'] = $('#confirm').val();
+			var form_data = $(this).serialize(); 
 			var isVerified = verify(form_object);
-			var form_data = JSON.stringify(form_object);
-			
-			
 			
 			if(isVerified) {
 				$.post('/createAccount', form_data, function(response) {
