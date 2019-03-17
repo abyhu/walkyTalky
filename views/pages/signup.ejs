@@ -2,6 +2,30 @@
 <html>
 	<head>
 		<% include ../partials/header.ejs %>
+		
+	</head>
+	
+	<body>
+		<% include ../partials/nav.ejs %>
+		<div class="jumbotron text-center">
+			<div class="container">
+				<h1>Walky Talky</h1>
+			</div>
+		</div>
+		<div class="container">
+			<div class="col-md-6">
+				<form action='/createAccount' method='post' id='signupForm'>
+					<h3>Welcome to Walky Talky!</h3>
+					<p>To create an account please enter the following information:</p>
+					<p><label>Create Username: <input type='text' name='username'></label></p>
+					<p><label>Select Password: <input type='password' name='password'></label></p>
+					<p><label>Confirm Password: <input type='password' name='confirm'></label></p>
+					<input type='submit' name='signup' value='Sign Up'>
+					<span id="error"></span>
+				</form>
+			</div>
+		</div>
+		
 		<script>
 		$('#signupForm').submit(function(event) {
 			event.preventDefault(); 
@@ -17,31 +41,13 @@
 
 		function isVerified(form_data) {
 			console.log(form_data);
+			if (form_data.confirm == form_data.password && form_data.username != null) {
+				return true;
+			} else {
+				return false;
+			}
 		}
-	</script>
-	</head>
-	
-	
-	
-	<body>
-		<% include ../partials/nav.ejs %>
-		<div class="jumbotron text-center">
-			<div class="container">
-				<h1>Walky Talky</h1>
-			</div>
-		</div>
-		<div class="container">
-			<div class="col-md-6">
-				<form action='' method='' id='signupForm'>
-					<h3>Welcome to Walky Talky!</h3>
-					<p>To create an account please enter the following information:</p>
-					<p><label>Create Username: <input type='text' name='username'></label></p>
-					<p><label>Select Password: <input type='password' name='password'></label></p>
-					<p><label>Confirm Password: <input type='password' name='confirm'></label></p>
-					<input type='submit' name='signup' value='Sign Up'>
-					<span id="error"></span>
-				</form>
-			</div>
-		</div> <!-- row -->
+	</script>	
+		
 	</body>
 </html>
