@@ -33,10 +33,12 @@
 			var form_data = $(this).serialize();
 
 			var isVerified = verify(form_data);
-
-			$.post(post_url, form_data, function(response) {
+			
+			if(isVerified) {
+				$.post(post_url, form_data, function(response) {
 				$('#server-results').html(response);
 			});
+			}			
 		});
 
 		function verify(form_data) {
