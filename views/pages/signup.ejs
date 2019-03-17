@@ -30,8 +30,9 @@
 		$('#signupForm').submit(function(event) {
 			event.preventDefault(); 
 			var post_username = $(this).attr('action');
-			var isVerified = verify(this);
 			var form_data = $(this).serialize();
+			var isVerified = verify(form_data);
+			
 			
 			if(isVerified) {
 				$.post(post_url, form_data, function(response) {
@@ -42,7 +43,7 @@
 
 		function verify(form_data) {
 			console.log(form_data);
-			if (form_data.confirm == form_data.password && form_data.username != null) {
+			if (form_data['confirm'] == form_data['password'] && form_data['username'] != null) {
 				return true;
 			} else {
 				$('#error').text('There is a problem with your signup. Please try again.');
