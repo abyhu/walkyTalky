@@ -38,12 +38,12 @@
 			
 			if(isVerified) {
 				$.post('/createAccount', form_data, function(response) {
-				$('#server-results').html(response);
-				return true; 
+				//$('#server-results').html(response);
+				//return true; 
 			});
-			} else {
-				return false;
-			}
+			//} else {
+				//return false;
+			//}
 		});
 
 		function verify(form_object) {

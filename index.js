@@ -50,10 +50,7 @@ app.get('/db', async (req, res) => {
 
 app.post('/createAccount', urlencodedParser, async (req, res) => {
 
-	//SHOULD VERIFY THE TWO PASSWORDS ARE THE SAME
-	//SHOULD VERIFY THERE IS A USERNAME AND PASSWORD 
 	//SHOULD VERIFY THERE IS NO SQL INJECTION
-	//PASSWORD NEEDS HASHED AND SALTED
 	const username = req.body.username;
 	const password = req.body.password;
 	
