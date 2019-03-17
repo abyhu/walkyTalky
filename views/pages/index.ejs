@@ -14,32 +14,13 @@
 			<div class="col-md-6">
 				<form action='/login' method='post' id='loginForm'>
 					<h3>Welcome to Walky Talky, please login:</h3>
-					<p><label>Username: <input type='text' name='username'></label></p>
-					<p><label>Password: <input type='password' name='password'></label></p>
+					<p><label>Username: <input type='text' name='username' id='username'></label></p>
+					<p><label>Password: <input type='password' name='password' id='password'></label></p>
 					<button type='submit' name='login'>Login</button>
 					<p>New? <a href='/signup'>Sign up</a> to create an account.</p>
 				</form>
 				<span id="error"></span>
 			</div>
 		</div> 
-		<script>
-		$('#loginForm').submit(function(event) {
-			var form_object = {};
-			form_object['username'] = $('#username').val();
-			form_object['password'] = $('#password').val();
-			var form_data = $(this).serialize(); 
-			var isVerified = verify(form_object);
-		});
-
-		function verify(form_object) {
-			console.log(form_object);
-			if (form_object['confirm'] == form_object['password'] && form_object['username'] != null) {
-				return true;
-			} else {
-				$('#error').text('There is a problem with your signup. Please try again.');
-				return false;
-			}
-		}
-	</script>	
 	</body>
 </html>
