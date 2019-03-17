@@ -87,7 +87,7 @@ app.post('/login', urlencodedParser, async (req, res) => {
 		} else {
 			client.release();
 			console.log(data);
-			//res.render('pages/index');
+			res.render('pages/walkyTalky');
 		}
 	});
 	
