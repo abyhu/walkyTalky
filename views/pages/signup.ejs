@@ -2,9 +2,7 @@
 <html>
 	<head>
 		<% include ../partials/header.ejs %>
-	</head>
-	
-	<script>
+		<script>
 		$('#signupForm').submit(function(event) {
 			event.preventDefault(); 
 			var post_username = $(this).attr('action');
@@ -21,6 +19,9 @@
 			console.log(form_data);
 		}
 	</script>
+	</head>
+	
+	
 	
 	<body>
 		<% include ../partials/nav.ejs %>
