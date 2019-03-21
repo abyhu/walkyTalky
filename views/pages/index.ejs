@@ -33,16 +33,18 @@
 				event.preventDefault();
 				var username = $('#username').val(); 
 				var password = $('#password').val(); 
-				$.post('/login', { username: username, password: password }, loginComplete)
+				$.post('/login', { username: username, password: password }) 
+					  .done(loginComplete)
+					  .fail(loginFailed)		
 			});
 			
 			function loginComplete(res, status, jqXHR) {
-				if (jqXHR.status == 204) {
-					$('loginForm').hide(); 
-					$('walkyTalky').show(); 
-				} else if (jqXHR.status > 400) {
-					$('#error').html('There was an error logging in, please try again.');
-				}
+				$('loginForm').hide(); 
+				$('walkyTalky').show(); 
+			}
+			
+			function loginFailed(jqXHR, status, res) {
+				$('#error').html(res);
 			}
 		
 		</script>
