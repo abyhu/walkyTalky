@@ -13,17 +13,16 @@ function createAccount (req, res){
 	const password = req.body.password;
 	
 	const hashedPassword = bcrypt.hashSync(password);
-	const client = pool.connect();
 	var sql = 'INSERT INTO app_user (username, password) VALUES ($1::text, $2::text)';
 	var values = [username, hashedPassword];
-	client.query(sql, values, function (err, data) {
+	pool.query(sql, values, function (err, data) {
 		if (err) {
 			console.error(err);
 			res.send("Error " + err);
 			//-------------------------------SHOULD RETURN AN ERROR TO THE USER TO SEE
 		} else {
 			res.render('pages/index');
-			client.release();
+			pool.release();
 		}
 	});
 }
