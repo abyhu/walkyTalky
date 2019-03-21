@@ -22,7 +22,6 @@ function createAccount (req, res){
 			//-------------------------------SHOULD RETURN AN ERROR TO THE USER TO SEE
 		} else {
 			res.render('pages/index');
-			pool.release();
 		}
 	});
 }
