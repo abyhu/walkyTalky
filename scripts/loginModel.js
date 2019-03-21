@@ -39,7 +39,6 @@ function login (req, res){
 			res.send("Error " + err);
 			//-------------------------------SHOULD RETURN AN ERROR TO THE USER TO SEE
 		} else {
-			pool.release();
 			console.log(data);
 			
 			bcrypt.compare(password, data.rows[0]['password'], function(err, result) {
