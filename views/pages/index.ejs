@@ -12,7 +12,7 @@
 		</div>
 		<div class="container" id="login">
 			<div class="col-md-6">
-				<form method='post' id='loginForm' onsubmit='login()'>
+				<form method='post' id='loginForm'>
 					<h3>Welcome to Walky Talky, please login:</h3>
 					<p><label>Username: <input type='text' name='username' id='username'></label></p>
 					<p><label>Password: <input type='password' name='password' id='password'></label></p>
@@ -30,7 +30,7 @@
 		
 		<script>
 			$('#signupForm').submit(function(event) {
-				//event.preventDefault();
+				event.preventDefault();
 				var username = $('#username').val(); 
 				var password = $('#password').val(); 
 				$.post('/login', { username: username, password: password }, loginComplete)
