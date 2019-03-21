@@ -36,11 +36,11 @@
 				$.post('/login', { username: username, password: password }, loginComplete)
 			});
 			
-			function loginComplete(res, status) {
-				if (status < 300) {
+			function loginComplete(res, status, jqXHR) {
+				if (jqXHR.status == 204) {
 					$('loginForm').hide(); 
 					$('walkyTalky').show(); 
-				} else if (status > 400) {
+				} else if (jqXHR.status > 400) {
 					$('#error').html('There was an error logging in, please try again.');
 				}
 			}
