@@ -21,7 +21,7 @@ function createAccount (req, res){
 			res.send("Error " + err);
 			//-------------------------------SHOULD RETURN AN ERROR TO THE USER TO SEE
 		} else {
-			res.render('/pages/index');
+			res.render('pages/index');
 			pool.release();
 		}
 	});
