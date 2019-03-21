@@ -44,7 +44,7 @@
 				$('#error').html('');
 				//--------------------------------SHOULD START A SESSION WITH ID
 				console.log(res);
-				$('#welcomeUser').html('');
+				$('#welcomeUser').html(res.userName);
 			}
 			
 			function loginFailed(jqXHR, status, res) {
