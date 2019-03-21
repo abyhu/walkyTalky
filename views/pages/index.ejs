@@ -41,6 +41,7 @@
 			function loginComplete(res, status, jqXHR) {
 				$('#loginForm').hide(); 
 				$('#walkyTalky').show(); 
+				$('#error').html('');
 			}
 			
 			function loginFailed(jqXHR, status, res) {
