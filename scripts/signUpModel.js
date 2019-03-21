@@ -26,7 +26,7 @@ function createAccount (req, res){
 			client.release();
 		}
 	});
-});
+}
 
 module.exports = {
 	createAccount: createAccount
