@@ -31,7 +31,7 @@ app.get('/logout', async (req, res) => {
 	}
 });
 
-app.post('/createAccount', urlencodedParser, scripts/signUpModel.createAccount);
+app.post('/createAccount', urlencodedParser, signUpModel.createAccount);
 
 app.post('/login', urlencodedParser, async (req, res) => {
 
