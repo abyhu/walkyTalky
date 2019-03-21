@@ -27,7 +27,7 @@ function createAccount (req, res){
 	});
 }
 
-login (req, res){
+function login (req, res){
 	//----------------------------------------SHOULD VERIFY THERE IS NO SQL INJECTION
 	const username = req.body.username;
 	const password = req.body.password;
