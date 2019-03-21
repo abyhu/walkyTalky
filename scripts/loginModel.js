@@ -31,8 +31,7 @@ function login (req, res){
 	//----------------------------------------SHOULD VERIFY THERE IS NO SQL INJECTION
 	const username = req.body.username;
 	const password = req.body.password;
-
-	const client = await pool.connect();
+	
 	var sql = 'SELECT id, username, password FROM app_user WHERE username=$1::text';
 	var values = [username];
 	pool.query(sql, values, function (err, data) {
