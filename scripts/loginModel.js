@@ -43,11 +43,11 @@ function login (req, res){
 			bcrypt.compare(password, data.rows[0]['password'], function(err, result) {
 				if (!result) {
 					//-------------------------------SHOULD RETURN AN ERROR TO THE USER TO SEE
-					res.send("Error: The passwords do not match.");
+					res.status(401).send("Error: The passwords do not match.");
 				} else {
 					var param = data.rows[0]['id']; 
 					//--------------------------------SHOULD START A SESSION WITH ID
-		   			res.render('pages/walkyTalky');	 
+		   			res.status(204).send();	 
 				}
 			}); 
 		}	

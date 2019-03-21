@@ -10,9 +10,9 @@
 				<h1>Walky Talky</h1>
 			</div>
 		</div>
-		<div class="container">
+		<div class="container" id="login">
 			<div class="col-md-6">
-				<form action='/login' method='post' id='loginForm'>
+				<form method='post' id='loginForm' onsubmit='login()'>
 					<h3>Welcome to Walky Talky, please login:</h3>
 					<p><label>Username: <input type='text' name='username' id='username'></label></p>
 					<p><label>Password: <input type='password' name='password' id='password'></label></p>
@@ -22,5 +22,28 @@
 				<span id="error"></span>
 			</div>
 		</div> 
+		<div class="container" id="walkyTalky">
+			<div class="col-md-6">
+				<h3>Welcome to Walky Talky!!! Login Successful!!!</h3>
+			</div>
+		</div>
+		
+		<script>
+			function login() {
+				var username = $('#username').val(); 
+				var password = $('#password').val(); 
+				$.post('/login', { username: username, password: password }, loginComplete)
+			}
+			
+			function loginComplete(res, status) {
+				if (status < 300) {
+					$('loginForm').hide(); 
+					$('walkyTalky').show(); 
+				} else if (status > 400) {
+					$('#error').html('There was an error logging in, please try again.');
+				}
+			}
+		
+		</script>
 	</body>
 </html>
