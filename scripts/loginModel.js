@@ -41,11 +41,11 @@ function login (req, res){
 			
 			bcrypt.compare(password, data.rows[0]['password'], function(err, result) {
 				if (!result) {
-					res.status(401).send("Error: The passwords do not match.");
+					res.status(401).send("Error: The username or password is incorrect.");
 				} else {
 					var param = data.rows[0]['id']; 
 					//--------------------------------SHOULD START A SESSION WITH ID
-		   			res.status(204).send();	 
+		   			res.status(204).send({ userId: data.rows[0]['id'], userName: data.rows[0]['username']});	 
 				}
 			}); 
 		}	
