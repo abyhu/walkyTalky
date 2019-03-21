@@ -57,7 +57,8 @@ function login (req, res){
 function logout (req, res){
 	try {
 		//-------------------------SESSON END? SOMETHING NEEDS TO HAPPEN HERE TO LOGOUT THE USER
-		res.render('pages/index'); 
+		$('#loginForm').show(); 
+		$('#walkyTalky').hide(); 
 
 	} catch (err) {
 		console.error(err);
