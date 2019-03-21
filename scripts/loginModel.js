@@ -45,7 +45,7 @@ function login (req, res){
 				} else {
 					var param = data.rows[0]['id']; 
 					//--------------------------------SHOULD START A SESSION WITH ID
-		   			res.status(200).send(param);	 
+		   			res.status(204).send();	 
 				}
 			}); 
 		}	
