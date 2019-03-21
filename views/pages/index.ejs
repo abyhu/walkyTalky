@@ -42,7 +42,9 @@
 				$('#loginForm').hide(); 
 				$('#walkyTalky').show(); 
 				$('#error').html('');
-				console.log(res);
+				//--------------------------------SHOULD START A SESSION WITH ID
+				console.log(res[0]['id']);
+				console.log(res[0]['id']);
 			}
 			
 			function loginFailed(jqXHR, status, res) {

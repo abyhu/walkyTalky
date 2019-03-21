@@ -44,7 +44,6 @@ function login (req, res){
 					res.status(401).send("Error: The username or password is incorrect.");
 				} else {
 					var param = data.rows[0]['id']; 
-					//--------------------------------SHOULD START A SESSION WITH ID
 		   			res.status(200).send({ userId: data.rows[0]['id'], userName: data.rows[0]['username']});	 
 				}
 			}); 
