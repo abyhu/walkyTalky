@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<script src="scripts/login.js"></script>
 		<% include ../partials/header.ejs %>
 	</head>
 	<body>
@@ -27,30 +28,5 @@
 				<h3>Welcome to Walky Talky <span id=welcomeUser></span>!!! Login Successful!!!</h3>
 			</div>
 		</div>
-		
-		<script>
-			$('#loginForm').submit(function(event) {
-				event.preventDefault();
-				var username = $('#username').val(); 
-				var password = $('#password').val(); 
-				$.post('/login', { username: username, password: password }) 
-					  .done(loginComplete)
-					  .fail(loginFailed)		
-			});
-			
-			function loginComplete(res, status, jqXHR) {
-				$('#loginForm').hide(); 
-				$('#walkyTalky').show(); 
-				$('#error').html('');
-				//--------------------------------SHOULD START A SESSION WITH ID
-				console.log(res);
-				$('#welcomeUser').html(res.userName);
-			}
-			
-			function loginFailed(jqXHR, status, res) {
-				$('#error').html(jqXHR.responseText);
-			}
-		
-		</script>
 	</body>
 </html>
