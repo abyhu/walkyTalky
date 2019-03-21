@@ -13,7 +13,7 @@ function createAccount (req, res){
 	const password = req.body.password;
 	
 	const hashedPassword = bcrypt.hashSync(password);
-	const client = await pool.connect();
+	const client = pool.connect();
 	var sql = 'INSERT INTO app_user (username, password) VALUES ($1::text, $2::text)';
 	var values = [username, hashedPassword];
 	client.query(sql, values, function (err, data) {
