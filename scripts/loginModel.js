@@ -36,7 +36,6 @@ function login (req, res){
 	pool.query(sql, values, function (err, data) {
 		if (err) {
 			res.status(400).send("Error: " + err);
-			//-------------------------------SHOULD RETURN AN ERROR TO THE USER TO SEE
 		} else {
 			console.log(data);
 			
@@ -46,7 +45,7 @@ function login (req, res){
 				} else {
 					var param = data.rows[0]['id']; 
 					//--------------------------------SHOULD START A SESSION WITH ID
-		   			res.status(204).send();	 
+		   			res.status(200).send(param);	 
 				}
 			}); 
 		}	
