@@ -44,7 +44,7 @@
 			}
 			
 			function loginFailed(jqXHR, status, res) {
-				$('#error').html(res);
+				$('#error').html(jqXHR.responseText);
 			}
 		
 		</script>
