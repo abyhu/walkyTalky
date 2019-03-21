@@ -2,16 +2,11 @@ const express = require('express');
 const app = express(); 
 const path = require('path');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt-nodejs');
 const PORT = process.env.PORT || 5000;
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({extended:false});
 
-const { Pool } = require('pg');
-const pool = new Pool({
-	connectionString: process.env.DATABASE_URL,
-	ssl: true
-});
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
@@ -24,9 +19,10 @@ app.get('/', (req, res) => res.render('pages/index'));
 app.get('/signup', (req, res) => res.render('pages/signup'));
 app.get('/instructions', (req, res) => res.render('pages/instructions'));
 app.get('/references', (req, res) => res.render('pages/references'));
+
 app.get('/logout', async (req, res) => {
 	try {
-		//SOMETHING NEEDS TO HAPPEN HERE TO LOGOUT THE USER
+		//-------------------------SESSON END? SOMETHING NEEDS TO HAPPEN HERE TO LOGOUT THE USER
 		res.render('pages/index'); 
 
 	} catch (err) {
@@ -35,43 +31,11 @@ app.get('/logout', async (req, res) => {
 	}
 });
 
-app.get('/db', async (req, res) => {
-	try {
-		const client = await pool.connect();
-		const result = await client.query('SELECT * FROM test_table');
-		const results = { 'results': (result) ? result.rows : null};
-		res.render('pages/db', results);
-		client.release();
-	} catch (err) {
-		console.error(err);
-		res.send("Error: " + err);
-	}
-});
-
-app.post('/createAccount', urlencodedParser, async (req, res) => {
-
-	//SHOULD VERIFY THERE IS NO SQL INJECTION
-	const username = req.body.username;
-	const password = req.body.password;
-	
-	const hashedPassword = bcrypt.hashSync(password);
-	const client = await pool.connect();
-	var sql = 'INSERT INTO app_user (username, password) VALUES ($1::text, $2::text)';
-	var values = [username, hashedPassword];
-	client.query(sql, values, function (err, data) {
-		if (err) {
-			console.error(err);
-			res.send("Error " + err);
-		} else {
-			res.render('pages/index');
-			client.release();
-		}
-	});
-});
+app.post('/createAccount', urlencodedParser, signUpModel.createAccount);
 
 app.post('/login', urlencodedParser, async (req, res) => {
 
-	//SHOULD VERIFY THERE IS NO SQL INJECTION
+	//----------------------------------------SHOULD VERIFY THERE IS NO SQL INJECTION
 	const username = req.body.username;
 	const password = req.body.password;
 
@@ -81,24 +45,24 @@ app.post('/login', urlencodedParser, async (req, res) => {
 	client.query(sql, values, function (err, data) {
 		if (err) {
 			res.send("Error " + err);
-			//SHOULD RETURN AN ERROR TO THE USER TO SEE
+			//-------------------------------SHOULD RETURN AN ERROR TO THE USER TO SEE
 		} else {
 			client.release();
 			console.log(data);
 			
 			bcrypt.compare(password, data.rows[0]['password'], function(err, result) {
 				if (!result) {
+					//-------------------------------SHOULD RETURN AN ERROR TO THE USER TO SEE
 					res.send("Error: The passwords do not match.");
 				} else {
 					var param = data.rows[0]['id']; 
-					//START A SESSION WITH ID
+					//--------------------------------SHOULD START A SESSION WITH ID
 		   			res.render('pages/walkyTalky');	 
 				}
 			}); 
 		}	
 	});
 });
-
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
