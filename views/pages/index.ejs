@@ -43,9 +43,8 @@
 				$('#walkyTalky').show(); 
 				$('#error').html('');
 				//--------------------------------SHOULD START A SESSION WITH ID
-				console.log(res['id']);
-				console.log(res['username']);
-				$('#welcomeUser').html(res[0]['username']);
+				console.log(res);
+				$('#welcomeUser').html('');
 			}
 			
 			function loginFailed(jqXHR, status, res) {
