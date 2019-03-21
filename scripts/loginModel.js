@@ -35,14 +35,13 @@ function login (req, res){
 	var values = [username];
 	pool.query(sql, values, function (err, data) {
 		if (err) {
-			res.send("Error " + err);
+			res.status(400).send("Error: " + err);
 			//-------------------------------SHOULD RETURN AN ERROR TO THE USER TO SEE
 		} else {
 			console.log(data);
 			
 			bcrypt.compare(password, data.rows[0]['password'], function(err, result) {
 				if (!result) {
-					//-------------------------------SHOULD RETURN AN ERROR TO THE USER TO SEE
 					res.status(401).send("Error: The passwords do not match.");
 				} else {
 					var param = data.rows[0]['id']; 
@@ -57,8 +56,7 @@ function login (req, res){
 function logout (req, res){
 	try {
 		//-------------------------SESSON END? SOMETHING NEEDS TO HAPPEN HERE TO LOGOUT THE USER
-		$('#loginForm').show(); 
-		$('#walkyTalky').hide(); 
+		res.render('pages/index'); 
 
 	} catch (err) {
 		console.error(err);
