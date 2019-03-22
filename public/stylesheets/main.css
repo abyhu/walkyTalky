@@ -4,6 +4,15 @@ body {
 	background-color: #cde3f5; 
 }
 
+.navigation {
+	display: flex;
+	justify-content: space-between;
+}
+
+.navigation li {
+	flex: 1;
+}
+
 h1, h2 {
 	font-family: 'Sriracha', cursive;	
 	color: #cde3f5; 
@@ -17,4 +26,6 @@ h3 {
 #walkyTalky {
 	display: none;
 }
+
+
 
