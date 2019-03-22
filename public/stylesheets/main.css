@@ -6,6 +6,10 @@ body {
 	/*background-image: url(asset-data-url('../../views/images/background.png'));*/
 }
 
+.container { 
+	margin: 0 auto; 
+}
+
 /*---------------------NAVIGATION------------------------*/
 .navigation {
 	display: flex;
