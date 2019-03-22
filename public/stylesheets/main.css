@@ -10,7 +10,9 @@ body {
 .navigation {
 	display: flex;
 	justify-content: space-between;
+	padding 0;
 	margin: 0; 
+	
 }
 
 .navigation li {
@@ -27,6 +29,7 @@ body {
 .navigation li a :hover, .navigation li a :visited {
 	color: #1786ab; 
 	text-decoration: none;
+	padding: 2%; 
 }
 
 h1, h2 {
