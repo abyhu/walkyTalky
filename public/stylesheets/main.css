@@ -61,11 +61,26 @@ h3 {
 /*------------------BUTTONS AND LINKS---------------------*/
 
 button {
+	width: 50%; 
+	margin: 0 auto; 
 	border-radius: 20px; 
-	padding: 2% 10%;
+	padding: 2%;
 	font-size: 1em; 
 	color: #cde3f5; 
 	background-color: #1786abcc;
+}
+
+label {
+	width: 50%; 
+	margin: 0 auto; 
+}
+
+a {
+	color: #6a2c93; 
+}
+
+a:hover, a:visited {
+	color: #1786ab;
 }
 
 
