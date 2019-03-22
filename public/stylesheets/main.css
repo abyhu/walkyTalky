@@ -15,8 +15,7 @@ body {
 	width: 50%; 
 	margin: 0 25%; 
 	padding: 5%; 
-	background-color: #2d9587;
-	opacity: .5; 
+	background-color: #2d9587 .5; 
 	color: white; 
 }
 
