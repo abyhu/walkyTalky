@@ -20,7 +20,8 @@ body {
 	display: none;
 }
 
-#loginForm, #signupForm { 
+.col-md-6 {
+	width: 50%;
 }
 
 /*---------------------NAVIGATION------------------------*/
