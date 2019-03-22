@@ -21,7 +21,6 @@ app.set('view engine', 'ejs');
 
 //setup routing for each of the functions and page redirects
 app.get('/', (req, res) => res.render('pages/index'));
-app.get('/signup', (req, res) => res.render('pages/signup'));
 app.get('/instructions', (req, res) => res.render('pages/instructions'));
 app.get('/references', (req, res) => res.render('pages/references'));
 app.post('/createAccount', urlencodedParser, loginModel.createAccount);

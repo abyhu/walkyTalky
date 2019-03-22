@@ -30,7 +30,7 @@
 					<p><label>Username: <input type='text' name='username' id='username'></label></p>
 					<p><label>Password: <input type='password' name='password' id='password'></label></p>
 					<button type='submit' name='login'>Login</button>
-					<p>New? <a href='/signup'>Sign up</a> to create an account.</p>
+					<p>New? <a href='' onclick='signup()'>Sign up</a> to create an account.</p>
 				</form>
 				<span class="error"></span>
 			</div>
@@ -73,6 +73,12 @@
 				$('#error').html(jqXHR.responseText);
 			}
 		
+		//when a user clicks the link to sign up for an account
+		function signup() {
+			$('loginForm').hide();
+			$('signupForm').show();
+		}
+			
 		//use AJAX instead of an action to keep the data on the same page.
 		$('#signupForm').submit(function(event) {
 			
