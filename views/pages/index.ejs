@@ -18,7 +18,7 @@
 					<p><label>Create Username: <input type='text' name='username' id='usernameSignup'></label></p>
 					<p><label>Select Password: <input type='password' name='password' id='passwordSignup'></label></p>
 					<p><label>Confirm Password: <input type='password' name='confirm' id='confirmSignup'></label></p>
-					<span class="error"></span>
+					<p><span class="error"></span></p>
 					<button type='submit' name='signup'>Sign Up</button>
 				</form>
 			</div>
@@ -29,7 +29,7 @@
 					<h3>Welcome to Walky Talky!</h3>
 					<p><label>Username: <input type='text' name='username' id='usernameLogin'></label></p>
 					<p><label>Password: <input type='password' name='password' id='passwordLogin'></label></p>
-					<span class="error"></span>
+					<p><span class="error"></span></p>
 					<button type='submit' name='login'>Login</button>
 					<p>New? <a href='#' id='signupLink'>Sign up</a> to create an account.</p>
 				</form>
@@ -104,14 +104,14 @@
 		});
 			
 		//callback function for a successful response - notice the order of the parameters
-		function loginComplete(res, status, jqXHR) {
+		function signupComplete(res, status, jqXHR) {
 			$('#signup').hide(); 
 			$('#login').show(); 
 			$('.error').html('');
 		}
 
 		//callback function for a failed response - notice the change in the parameter order
-		function loginFailed(jqXHR, status, res) {
+		function signupFailed(jqXHR, status, res) {
 			$('.error').html(jqXHR.responseText);
 		}
 
