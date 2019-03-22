@@ -61,7 +61,7 @@
 
 		//callback function for a successful response - notice the order of the parameters
 		function loginComplete(res, status, jqXHR) {
-			$('#loginForm').hide(); 
+			$('#login').hide(); 
 			$('#walkyTalky').show(); 
 			$('.error').html('');
 			//------------------------------------------------SHOULD START A SESSION WITH ID
@@ -76,7 +76,7 @@
 		//when a user clicks the link to sign up for an account
 		$('#signup').click(function(event) {
 		  	event.preventDefault();
-			$('loginForm').hide();
+			$('login').hide();
 			$('signupForm').show();
 			return false;
 		});
@@ -106,7 +106,7 @@
 		//callback function for a successful response - notice the order of the parameters
 		function loginComplete(res, status, jqXHR) {
 			$('#signupForm').hide(); 
-			$('#loginForm').show(); 
+			$('#login').show(); 
 			$('.error').html('');
 		}
 
