@@ -10,7 +10,7 @@ body {
 .navigation {
 	display: flex;
 	justify-content: space-between;
-	padding 0;
+	padding: 0;
 	margin: 0; 
 	
 }
