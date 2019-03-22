@@ -18,7 +18,7 @@ body {
 	background-color: #cde3f5; 
 }
 
-#walkyTalky {
+#walkyTalky, #signupForm {
 	display: none;
 }
 

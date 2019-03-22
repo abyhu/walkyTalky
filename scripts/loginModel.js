@@ -8,7 +8,7 @@ const pool = new Pool({
 });
 
 function createAccount (req, res){ 
-	//---------------------------------------IF POSSIBLE, VERIFY THERE IS NO SQL INJECTION
+	//---------------------------------------SHOULD VERIFY THERE IS NO SQL INJECTION
 	const username = req.body.username;
 	const password = req.body.password;
 	
@@ -17,11 +17,9 @@ function createAccount (req, res){
 	var values = [username, hashedPassword];
 	pool.query(sql, values, function (err, data) {
 		if (err) {
-			console.error(err);
-			res.send("Error " + err);
-			//-------------------------------SHOULD RETURN AN ERROR TO THE USER TO SEE
+			res.status(400).send("Error: " + err);
 		} else {
-			res.render('pages/index');
+			res.status(204).send();
 		}
 	});
 }
@@ -36,9 +34,7 @@ function login (req, res){
 	pool.query(sql, values, function (err, data) {
 		if (err) {
 			res.status(400).send("Error: " + err);
-		} else {
-			console.log(data);
-			
+		} else {	
 			bcrypt.compare(password, data.rows[0]['password'], function(err, result) {
 				if (!result) {
 					res.status(401).send("Error: The username or password is incorrect.");
