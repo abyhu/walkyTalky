@@ -13,32 +13,6 @@ h3 {
 	color: #4d4e4c; 
 }
 
-.jumbotron {
-	background: #2d9587;
-	color: white;
-	padding-bottom: 80px; 
-}
-
-.jumbotron .btn-primary {
-	background: #845ac7;
-	border-color: #845ac7; 
-}
-
-.jumbotron .btn-primary:hover {
-	background: #7646c1; 
-}
-
-.jumbotron p {
-	color: #cde3f5;
-	max-width: 75%;
-	margin: 1em auto 2em; 
-}
-
-.navbar + .jumbotron {
-	background-color: none;
-	margin-top: -20px; 
-}
-
 #walkyTalky {
 	display: none;
 }
