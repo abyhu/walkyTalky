@@ -28,7 +28,7 @@ body {
 	text-decoration: none; 
 }
 
-.navigation li a:hover, .navigation li a:visited {
+.navigation li a:hover {
 	color: #1786ab; 
 }
 
