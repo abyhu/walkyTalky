@@ -14,8 +14,12 @@ body {
 #loginForm, #signupForm {
 	width: 50%; 
 	margin: 0 25%; 
-	padding: 10%; 
-	background-color: #1786ab88; 
+	padding: 5% 10%; 
+	background-color: #cde3f5; 
+}
+
+#walkyTalky {
+	display: none;
 }
 
 /*---------------------NAVIGATION------------------------*/
@@ -44,13 +48,24 @@ body {
 	color: #1786ab; 
 }
 
+/*-----------------------HEADERS--------------------------*/
 h1, h2 {
 	font-family: 'Sriracha', cursive;	
 	color: #cde3f5; 
 }
 
-#walkyTalky {
-	display: none;
+h3 {
+	font-size: 1.30em; 
+}
+
+/*------------------BUTTONS AND LINKS---------------------*/
+
+button {
+	border-radius: 12px; 
+	padding: 2% 10%;
+	font-size: 1em; 
+	color: #cde3f5; 
+	background-color: 1786abcc;
 }
 
 
