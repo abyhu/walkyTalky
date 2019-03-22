@@ -21,8 +21,6 @@ body {
 }
 
 #loginForm, #signupForm { 
-	width: auto;
-	margin: 0 auto; 
 }
 
 /*---------------------NAVIGATION------------------------*/
