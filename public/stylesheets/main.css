@@ -61,11 +61,11 @@ h3 {
 /*------------------BUTTONS AND LINKS---------------------*/
 
 button {
-	border-radius: 12px; 
+	border-radius: 20px; 
 	padding: 2% 10%;
 	font-size: 1em; 
 	color: #cde3f5; 
-	background-color: 1786abcc;
+	background-color: #1786abcc;
 }
 
 
