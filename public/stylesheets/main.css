@@ -11,6 +11,14 @@ body {
 	margin: 0 auto; 
 }
 
+#loginForm, #signupForm {
+	width: 50%; 
+	margin: 0 25%; 
+	padding: 5%; 
+	background-color: #2d9587;
+	color: white; 
+}
+
 /*---------------------NAVIGATION------------------------*/
 .navigation {
 	display: flex;
