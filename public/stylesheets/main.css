@@ -28,8 +28,8 @@ body {
 
 .navigation li a :hover, .navigation li a :visited {
 	color: #1786ab; 
-	text-decoration: none;
-	padding: 2%; 
+	text-decoration: none !important;
+	margin: 2%; 
 }
 
 h1, h2 {
