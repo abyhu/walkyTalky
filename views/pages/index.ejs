@@ -117,8 +117,8 @@
 
 		function verify(username, password, confirm) {
 			if ((confirm == password) 
-				&& (username != null || username != '')
-			    && (password != null || password != '')) {
+				&& (username != null && username != '')
+			    && (password != null && password != '')) {
 				return true;
 			} else {
 				$('.error').text('There is a problem with your signup. Please try again.');
