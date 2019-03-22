@@ -11,14 +11,14 @@ body {
 	margin: 0 auto; 
 }
 
-#loginForm, #signupForm {
+#login, #signup {
 	width: 30%; 
 	margin: 0 25%; 
 	padding: 5% 10%; 
 	background-color: #cde3f5; 
 }
 
-#walkyTalky, #signupForm {
+#walkyTalky, #signup {
 	display: none;
 }
 
