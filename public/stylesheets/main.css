@@ -12,13 +12,17 @@ body {
 
 #login, #signup {
 	width: 30%; 
-	margin: 0 35%; 
+	margin: 0 auto; 
 	padding: 5% 10%; 
 	background-color: #cde3f5; 
 }
 
 #walkyTalky, #signup {
 	display: none;
+}
+
+#loginForm, #signupForm { 
+	margin: 0 auto; 
 }
 
 /*---------------------NAVIGATION------------------------*/
