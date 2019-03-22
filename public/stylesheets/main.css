@@ -12,7 +12,7 @@ body {
 }
 
 #loginForm, #signupForm {
-	width: 50%; 
+	width: 30%; 
 	margin: 0 25%; 
 	padding: 5% 10%; 
 	background-color: #cde3f5; 
