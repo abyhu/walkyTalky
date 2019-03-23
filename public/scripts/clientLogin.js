@@ -20,7 +20,6 @@ function loginComplete(res, status, jqXHR) {
 	$('#login').hide(); 
 	$('#walkyTalky').show(); 
 	$('.error').html('');
-	//------------------------------------------------SHOULD START A SESSION WITH ID
 	$('#welcomeUser').html(res.username);
 }
 
@@ -53,7 +52,7 @@ $('#signupForm').submit(function(event) {
 
 	if(isVerified) {
 		$.post('/createAccount', { username: username, password: password }) 
-		//becuase there is a reponse on success and failure setup two callbacks
+		//because there is a reponse on success and failure setup two callbacks
 		.done(signupComplete)
 		.fail(signupFailed)
 	}
