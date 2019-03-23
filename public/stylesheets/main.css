@@ -43,6 +43,14 @@ body {
 	flex-direction: row; 
 }
 
+#conversation {
+	height: 490px; 
+	width: 500px;
+	margin-left: 10%;
+	background-color: #1786ab55;
+	border: solid #1786ab 2px;
+}
+
 .sections {
 	flex: 1;
 	display: flex; 
