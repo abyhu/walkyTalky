@@ -146,6 +146,7 @@ button {
 
 #conversation button {
 	width: 190px; 
+	padding: 2%;
 }
 
 #selectConversation {
