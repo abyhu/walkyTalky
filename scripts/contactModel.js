@@ -25,7 +25,7 @@ function addContact (req, res){
 				console.log(data);
 				if (err) {
 					res.status(401).send("Error: There was a problem connecting with that user.");
-				} else if (data.RowCtor == null) {
+				} else if (data.RowCtor != null) {
 					req.session.contactid = data.rows[0]['id'];
 					req.session.contactusername = data.rows[0]['username'];
 		   			res.status(200).send({ id: data.rows[0]['id'], 
