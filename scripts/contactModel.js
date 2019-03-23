@@ -26,8 +26,10 @@ function addContact (req, res){
 					console.log(err);
 					res.status(401).send("Error: There was a problem connecting with that user.");
 				} else {
-					res.status(200).send({ id: data.rows[0]['id'], 
-											username: data.rows[0]['username'] });
+					res.status(200).send({ contactid: req.session.contactid, 
+											contactusername: req.session.contactusername, 
+										 	userid: req.session.userid,
+										 	username: req.session.username });
 				}
 			});
 		}
