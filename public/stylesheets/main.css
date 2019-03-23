@@ -127,7 +127,6 @@ a:hover, a:visited {
 }
 
 button, .button { 
-	margin: 0 auto; 
 	padding: 4%;
 	border-radius: 20px; 
 	font-size: 1em; 
@@ -137,6 +136,7 @@ button, .button {
 }
 
 button {
+	margin: 0 auto;
 	width: 125px;
 }
 
@@ -147,6 +147,7 @@ button {
 
 #conversation button {
 	width: 190px; 
+	margin: 0 auto;
 }
 
 #selectConversation {
