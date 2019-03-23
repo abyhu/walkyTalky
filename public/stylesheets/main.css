@@ -98,7 +98,8 @@ button, .button {
 }
 
 button {
-	padding: 4% 30%;
+	padding: 4% 5%;
+	width: 50px;
 }
 
 .button {
