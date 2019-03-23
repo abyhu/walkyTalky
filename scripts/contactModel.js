@@ -21,8 +21,7 @@ function addContact (req, res){
 			sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::int, $2::int)';
 			values = [req.session.id, contactid];
 			pool.query(sql, values, function(err, data) {
-				if (!result) {
-					//login failed as password was not correct, send error message
+				if (err) {
 					res.status(401).send("Error: There was a problem connect with that user.");
 				} else {
 					//start a session and return the data
