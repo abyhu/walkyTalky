@@ -141,8 +141,15 @@ button {
 	margin: 0 auto;
 }
 
-.button, #conversation button {
+.button, {
 	padding: 4%;
+	width: 190px; 
+	margin: 0 auto 5% auto; 
+	color: white;
+}
+
+#conversation button {
+	padding: 2%;
 	width: 190px; 
 	margin: 0 auto 5% auto; 
 	color: white;
