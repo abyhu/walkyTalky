@@ -10,7 +10,7 @@ body {
 #background {
 	background-image: url('../images/background.png');
 	background-repeat: repeat-y;
-	background-position: center top;
+	background-position: center;
 	margin: 0 auto;
 	width: 1000px;
 }
