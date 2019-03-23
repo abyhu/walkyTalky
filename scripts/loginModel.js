@@ -17,7 +17,7 @@ function createAccount (req, res){
 	var values = [username, hashedPassword];
 	pool.query(sql, values, function (err, data) {
 		if (err) {
-			res.status(400).send("Error: " + err);
+			res.status(400).send("Error: There was an error creating this account.");
 		} else {
 			res.status(204).send();
 		}
