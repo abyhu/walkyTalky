@@ -22,7 +22,7 @@ function addContact (req, res){
 			console.log(contactid);
 			console.log(req.session.userid);
 			sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::integer, $2::integer)';
-			values = [parseInt(req.session.id), contactid];
+			values = [req.session.userid, contactid];
 			pool.query(sql, values, function(err, data) {
 				if (err) {
 					console.log(err);
