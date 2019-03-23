@@ -44,8 +44,8 @@ function login (req, res){
 					//start a session and return the data
 					req.session.id = data.rows[0]['id'];
 					req.session.username = data.rows[0]['username'];
-					console.log('Session id:' + res.session.id); 
-					console.log('Session name: ' + res.session.username);
+					console.log('Session id:' + req.session.id); 
+					console.log('Session name: ' + req.session.username);
 		   			res.status(200).send({ userId: data.rows[0]['id'], userName: data.rows[0]['username']});					
 				}
 			}); 
