@@ -18,7 +18,8 @@ const loginModel = require("./scripts/loginModel.js");
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(require('morgan')('dev'));
+
+//start a session when someone is using the app
 app.use(session({
 	name: 'server-session-cookie-id', 
 	secret: 'walkyTalkySecretKey', 
@@ -27,13 +28,14 @@ app.use(session({
 	store: new FileStore()
 }));
 
-function isAuthenticated(req, res, next {
+//middleware to check to see if user is authenticated
+function isAuthenticated(req, res, next) {
 	if(req.session.username != null && req.session.id != null) {
 		return next();
 	} else {
 		res.redirect('/');
 	}
-}));
+}
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
