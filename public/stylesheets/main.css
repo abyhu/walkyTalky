@@ -112,7 +112,7 @@ h3 {
 	font-size: 1.30em; 
 }
 
-#welcomeMessage h3 {
+#welcomeMessage h3, #messages h3 {
 	margin: 50% auto; 
 	text-align: center;
 }
