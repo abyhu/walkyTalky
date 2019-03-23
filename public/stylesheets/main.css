@@ -81,6 +81,7 @@ body {
 
 #walkyMenu {
 	background-image: url('../images/walkyTalky.png');
+	background-repeat: no-repeat;
 	display: flex;
 	flex-direction: column;
 }
@@ -119,9 +120,9 @@ button {
 }
 
 .button {
-	padding: 1%;
+	padding: 2%;
 	width: 200px; 
-	margin: 0 auto 1% auto;
+	margin: 0 auto 3% auto;
 	flex: 5; 
 }
 
