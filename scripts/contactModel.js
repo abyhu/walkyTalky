@@ -15,23 +15,29 @@ function addContact (req, res){
 	pool.query(sql, values, function (err, data) {
 		if (err) {
 			console.log(err);
-			res.status(400).send("Error: That user is not a member of WalkyTalky.");
+			res.status(400).send("Error: There was a problem connecting with that user.");
 		} else {
-			req.session.contactid = data.rows[0]['id'];
+			try {
+				req.session.contactid = data.rows[0]['id'];
 			req.session.contactusername = data.rows[0]['username'];
 			sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::integer, $2::integer) ON CONFLICT ON CONSTRAINT contact DO NOTHING';
 			values = [req.session.userid, req.session.contactid];
 			pool.query(sql, values, function(err, data) {
-				if (err) {
-					console.log(err);
-					res.status(500).send("Error: There was a problem connecting with that user.");
-				} else {
-					res.status(200).send({ contactid: req.session.contactid, 
-											contactusername: req.session.contactusername, 
-										 	userid: req.session.userid,
-										 	username: req.session.username });
-				}
-			});
+					if (err) {
+						console.log(err);
+						res.status(500).send("Error: There was a problem connecting with that user.");
+					} else {
+						res.status(200).send({ contactid: req.session.contactid, 
+												contactusername: req.session.contactusername, 
+												userid: req.session.userid,
+												username: req.session.username });
+					}
+				});
+			} catch {
+				res.status(400).send("Error: That user is not a member of WalkyTalky.");	   
+			}
+			
+			
 		}
 	});
 }

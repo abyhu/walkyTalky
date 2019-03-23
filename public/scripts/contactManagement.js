@@ -3,6 +3,7 @@ $('#addNewContact').click(function(event) {
 	event.preventDefault();
 	$('#welcomeMessage').hide();
 	$('#addContactInfo').show();
+	$('#messages').hide();
 	return false;
 });
 
