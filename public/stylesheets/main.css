@@ -5,7 +5,7 @@ body {
 	margin: 5% auto;
 	height: 800px;
 	width: 1000px; 
-	background-color: #4d4e4c;
+	background-color: darkgray;
 }
 
 #background {
@@ -14,6 +14,7 @@ body {
 	background-position: center;
 	margin: 0 auto;
 	width: 1000px;
+	padding: 5%;
 }
 
 .container { 
@@ -30,7 +31,7 @@ body {
 	padding: 2% 2%; 
 	background-color: #1786ab55;
 	border: solid #1786ab 2px;
-	margin: 0 5%; 
+	margin: 0 auto; 
 }
 
 #walkyTalky, #signup {
