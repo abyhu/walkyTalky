@@ -90,5 +90,8 @@ a:hover, a:visited {
 	color: #1786ab;
 }
 
-
+/*------------------PARAGRAPHS---------------------*/
+#login, #signup {
+	color: #fefefe;
+}
 
