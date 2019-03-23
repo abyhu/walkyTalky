@@ -46,7 +46,7 @@ app.get('/', (req, res) => res.render('pages/index'));
 app.get('/instructions', (req, res) => res.render('pages/instructions'));
 app.get('/references', (req, res) => res.render('pages/references'));
 app.post('/createAccount', urlencodedParser, loginModel.createAccount);
-app.post('/login', isAuthenticated, urlencodedParser, loginModel.login);
+app.post('/login', urlencodedParser, loginModel.login);
 app.get('/logout', loginModel.logout);
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
