@@ -19,7 +19,7 @@ body {
 #login, #signup {
 	width: 30%;  
 	padding: 5% 5%; 
-	background-color: #fefefe;
+	background-color: #1786abcc;
 	border: solid #1786ab 3px;
 	margin-top: 5%; 
 }
@@ -63,7 +63,7 @@ body {
 h1, h2 {
 	font-family: 'Sriracha', cursive;	
 	color: #1786ab; 
-	margin: 0; 
+	margin: 2% 5%;
 }
 
 h3 {
