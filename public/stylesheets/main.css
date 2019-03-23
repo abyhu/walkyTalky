@@ -11,7 +11,7 @@ body {
 	margin: 0 auto; 
 }
 
-#walkyTitle {
+#walkyHeader {
 	background-color: darkgrey;
 }
 
@@ -59,7 +59,7 @@ body {
 /*-----------------------HEADERS--------------------------*/
 h1, h2 {
 	font-family: 'Sriracha', cursive;	
-	color: #cde3f5; 
+	color: #1786ab; 
 }
 
 h3 {
