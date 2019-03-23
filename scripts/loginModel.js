@@ -32,9 +32,9 @@ function login (req, res){
 	var sql = 'SELECT id, username, password FROM app_user WHERE username=$1::text';
 	var values = [username];
 	pool.query(sql, values, function (err, data) {
-		if (err) {
+		if (err || data.rows < 1) {
 			//there was a problem with authentication, send an error to the user
-			res.status(400).send("An unknown error occurred.");
+			res.status(400).send("An error occured, do you need to create an account?");
 		} else {	
 			bcrypt.compare(password, data.rows[0]['password'], function(err, result) {
 				if (!result) {
