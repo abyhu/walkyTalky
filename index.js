@@ -32,6 +32,8 @@ app.use(session({
 
 //middleware to check to see if user is authenticated
 function isAuthenticated(req, res, next) {
+	console.log(req.session.username);
+	console.log(req.session.id);
 	if(req.session.username != null && req.session.id != null) {
 		return next();
 	} else {
