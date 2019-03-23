@@ -8,20 +8,19 @@ body {
 }
 
 .container { 
-	margin: 0 auto; 
-	margin: 1% 2%;
-	
+	margin: 0 auto; 	
 }
 
-#walkyHeader {  
+#walkyHeader { 
 	background-color: #fefefe;
+	padding: 1% 2%; 
 }
 
 #login, #signup {
 	width: 30%;  
 	padding: 5% 5%; 
 	background-color: #1786ab99;
-	border: solid #1786ab 3px;
+	border: solid #1786ab 2px;
 	margin-top: 5%; 
 }
 
@@ -69,10 +68,6 @@ h1, h2 {
 
 h3 {
 	font-size: 1.30em; 
-}
-
-#walkyHeader h1 {
-	margin: 0 auto; 
 }
 
 /*------------------BUTTONS AND LINKS---------------------*/
