@@ -65,7 +65,7 @@ body {
 .navigation li {
 	flex: 1;
 	text-align: center;
-	background-color: #222222;
+	background-color: #4d4e4c;
 	list-style-type: none;
 	padding: 1%;
 }
@@ -85,7 +85,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	height: 512px;
-	width: 512px;
+	width: 300px;
 }
 
 /*-----------------------HEADERS--------------------------*/
