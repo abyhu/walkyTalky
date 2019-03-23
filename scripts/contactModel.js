@@ -13,35 +13,22 @@ function addContact (req, res){
 	var sql = 'SELECT id, username FROM app_user WHERE username=$1::text';
 	var values = [contactusername];
 	pool.query(sql, values, function (err, data) {
-		if (err || data.rows.length < 1) {
+		if (err) {
 			console.log(err);
-			res.status(400).send("Error: There was an unknown error.");
+			res.status(400).send("Error: That user is not a member of WalkyTalky.");
 		} else {
-			var contactid = data.rows[0]['id'];
-			sql = 'SELECT id FROM friend WHERE user1_id=$1::integer AND user2_id=$2::integer OR user1_id=$2::integer AND user2_id=$1::integer'; 
-			values = [req.session.userid, contactid];
+			req.session.contactid = data.rows[0]['id'];
+			req.session.contactusername = data.rows[0]['username'];
+			sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::integer, $2::integer) ON CONFLICT ON CONSTRAINT contact DO NOTHING';
+			values = [req.session.userid, req.session.contactid];
 			pool.query(sql, values, function(err, data) {
 				if (err) {
 					console.log(err);
 					res.status(401).send("Error: There was a problem connecting with that user.");
-				} else if (data.rows.length > 0) {
-					sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::integer, $2::integer)';
-					values = [req.session.userid, contactid];
-					pool.query(sql, values, function(err, data) {
-						console.log(data);
-						if (err) {
-							console.log(err);
-							res.status(401).send("Error: You area already connected with that user.");
-						} else {
-							req.session.contactid = data.rows[0]['id'];
-							req.session.contactusername = data.rows[0]['username'];
-							res.status(200).send({ id: data.rows[0]['id'], 
-												  username: data.rows[0]['username'] });	
-						}
-					});
 				} else {
-					res.status(401).send("Error: There was a problem connecting with that user.");
-				}	
+					res.status(200).send({ id: data.rows[0]['id'], 
+											username: data.rows[0]['username'] });
+				}
 			});
 		}
 	});
