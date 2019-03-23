@@ -17,7 +17,7 @@ function addContact (req, res){
 			res.status(400).send("An unknown error occurred.");
 		} else {
 			var contactid = data.rows[0]['id'];
-			sql = 'SELECT id FROM friend WHERE user1_id=$1::string AND user2_id=$2::string OR user1_id=$2::string AND user2_id=$1::string'; 
+			sql = 'SELECT id FROM friend WHERE user1_id=$1::integer AND user2_id=$2::integer OR user1_id=$2::integer AND user2_id=$1::integer'; 
 			values = [req.session.userid, contactid];
 			pool.query(sql, values, function(err, data) {
 				if (err) {
