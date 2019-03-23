@@ -19,10 +19,10 @@ function addContact (req, res){
 		} else {
 			try {
 				req.session.contactid = data.rows[0]['id'];
-			req.session.contactusername = data.rows[0]['username'];
-			sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::integer, $2::integer) ON CONFLICT ON CONSTRAINT contact DO NOTHING';
-			values = [req.session.userid, req.session.contactid];
-			pool.query(sql, values, function(err, data) {
+				req.session.contactusername = data.rows[0]['username'];
+				sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::integer, $2::integer) ON CONFLICT ON CONSTRAINT contact DO NOTHING';
+				values = [req.session.userid, req.session.contactid];
+				pool.query(sql, values, function(err, data) {
 					if (err) {
 						console.log(err);
 						res.status(500).send("Error: There was a problem connecting with that user.");
@@ -36,12 +36,25 @@ function addContact (req, res){
 			} catch {
 				res.status(400).send("Error: That user is not a member of WalkyTalky.");	   
 			}
-			
-			
+		}
+	});
+}
+
+function deleteContact (req, res) {
+	const contactuserid = req.body.contactuserid;
+	var sql = 'DELETE FROM friend WHERE user1_id=$1::integer AND user2_id=$2::integer'; 
+	values = [req.session.userid, contactuserid];
+	pool.query(sql, values, function (err, data) {
+		if (err) {
+			console.log(err);
+			res.status(500).send("Error: There was a problem deleting that contact.");
+		} else {
+			res.status(200).send("DELETED now need to adjust the page.");
 		}
 	});
 }
 
 module.exports = {
-	addContact: addContact
+	addContact: addContact, 
+	deleteContact: deleteContact
 };
