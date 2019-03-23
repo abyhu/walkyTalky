@@ -34,11 +34,22 @@ body {
 	margin: 0 auto; 
 }
 
-#walkyTalky, #signup {
+#signup, #walkyTalky {
 	display: none;
 }
 
-.col-md-6 {
+#walkyTalkyContainer {
+	display: flex; 
+	flex-direction: row; 
+}
+
+.sections {
+	flex: 1;
+	display: flex; 
+	flex-direction: column;
+}
+
+.modal {
 	width: 50%;
 	margin: 0 auto;
 }
@@ -49,7 +60,6 @@ body {
 	justify-content: space-between;
 	padding: 0 0 5% 0;
 	margin: 0; 
-	
 }
 
 .navigation li {
@@ -103,13 +113,14 @@ button, .button {
 
 button {
 	padding: 4% 5%;
-	width: 200px;
+	width: 125px;
 }
 
 .button {
 	padding: 2% 5%;
 	width: 200px; 
 	margin: 0 auto 5% auto;
+	flex: 1; 
 }
 
 
