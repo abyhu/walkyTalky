@@ -3,6 +3,8 @@ const express = require('express');
 const app = express(); 
 const path = require('path');
 const PORT = process.env.PORT || 5000;
+var session = require('express-session');
+var FileStore = require('session-file-store')(session); 
 
 //establish different parsers to use with the data received from the client
 const bodyParser = require('body-parser');
@@ -13,6 +15,7 @@ const urlencodedParser = bodyParser.urlencoded({extended:false});
 const loginModel = require("./scripts/loginModel.js");
 
 //establish file directories, parsers and view engines
+app.use(require('morgan')('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
