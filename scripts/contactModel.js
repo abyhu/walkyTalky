@@ -40,6 +40,19 @@ function addContact (req, res){
 	});
 }
 
+/*function getContactList (req, res) {
+	var sql = 'SELECT c.username username FROM app_user c JOIN friend f ON c.id = f.user2_id WHERE f.user1_id = $1::integer'; 
+	values = [req.session.userid];
+	pool.query(sql, values, function (err, data) {
+		if (err) {
+			console.log(err);
+			res.status(500).send("Error: There was a problem deleting that contact.");
+		} else {
+			res.status(200).send("DELETED now need to adjust the page.");
+		}
+	});
+}
+
 function deleteContact (req, res) {
 	const contactuserid = req.body.contactuserid;
 	var sql = 'DELETE FROM friend WHERE user1_id=$1::integer AND user2_id=$2::integer'; 
@@ -52,7 +65,7 @@ function deleteContact (req, res) {
 			res.status(200).send("DELETED now need to adjust the page.");
 		}
 	});
-}
+}*/
 
 module.exports = {
 	addContact: addContact, 
