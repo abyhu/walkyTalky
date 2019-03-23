@@ -9,10 +9,10 @@ body {
 
 .container { 
 	margin: 0 auto; 
+	background-color: #fefefe;
 }
 
-#walkyHeader {
-	background-color: #fefefe; 
+#walkyHeader { 
 	margin: 2% 5%;  
 }
 
