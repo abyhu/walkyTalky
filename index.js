@@ -13,7 +13,7 @@ const urlencodedParser = bodyParser.urlencoded({extended:false});
 
 //include all the different files with scripts to be included in the project
 const loginModel = require("./scripts/loginModel.js");
-const contactManagementModel = require("./scripts/contactManagement.js");
+const contactManagementModel = require("./scripts/contactModel.js");
 
 //establish file directories, parsers and view engines
 app.use(express.static(path.join(__dirname, 'public')));
