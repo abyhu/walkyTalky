@@ -14,7 +14,7 @@ body {
 	background-position: center;
 	margin: 0 auto;
 	width: 1000px;
-	padding: 0 0 5 0%;
+	padding: 0 0 5% 0;
 }
 
 .container { 
@@ -101,7 +101,5 @@ a:hover, a:visited {
 }
 
 /*------------------PARAGRAPHS---------------------*/
-#login, #signup {
-	color: #fefefe;
-}
+
 
