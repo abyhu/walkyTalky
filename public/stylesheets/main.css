@@ -3,6 +3,7 @@ body {
 	font-family: 'Open Sans', sans-serif; 
 	padding: 0; 
 	margin: 5% auto;
+	height: 800px;
 	width: 1000px; 
 	background-color: darkgray;
 }
@@ -13,7 +14,7 @@ body {
 	background-position: center;
 	margin: 0 auto;
 	width: 1000px;
-	padding-bottom: 5%;
+	padding: 5%;
 }
 
 .container { 
@@ -46,7 +47,9 @@ body {
 .navigation {
 	display: flex;
 	justify-content: space-between;
-	padding: 0 5%;	
+	padding: 0;
+	margin: 0; 
+	
 }
 
 .navigation li {
@@ -98,3 +101,7 @@ a:hover, a:visited {
 }
 
 /*------------------PARAGRAPHS---------------------*/
+#login, #signup {
+	color: #fefefe;
+}
+
