@@ -81,15 +81,6 @@ h3 {
 }
 
 /*------------------BUTTONS AND LINKS---------------------*/
-button, .button { 
-	margin: 0 auto; 
-	border-radius: 20px; 
-	padding: 4% 30%;
-	font-size: 1em; 
-	color: #fefefe; 
-	background-color: #1786abcc;
-}
-
 a {
 	color: #6a2c93; 
 }
@@ -97,6 +88,23 @@ a {
 a:hover, a:visited {
 	color: #1786ab;
 }
+
+button, .button { 
+	margin: 0 auto; 
+	border-radius: 20px; 
+	font-size: 1em; 
+	color: #fefefe; 
+	background-color: #1786abcc;
+}
+
+button {
+	padding: 4% 30%;
+}
+
+.button {
+	padding: 2% 10%;
+}
+
 
 #selectConversation {
 	background-color: #ce3762;
