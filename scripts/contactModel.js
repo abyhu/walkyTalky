@@ -14,7 +14,6 @@ function addContact (req, res){
 	var values = [username];
 	pool.query(sql, values, function (err, data) {
 		if (err) {
-			console.log(err);
 			//there was a problem with authentication, send an error to the user
 			res.status(400).send("An unknown error occurred.");
 		} else {
@@ -25,17 +24,14 @@ function addContact (req, res){
 			values = [req.session.userid, contactid];
 			pool.query(sql, values, function(err, data) {
 				if (err) {
-					console.log(err);
 					res.status(401).send("Error: There was a problem connecting with that user.");
-				} else if (data.rows[0]['id']){
-					//start a session and return the data
+				} else if (data.rows[0]['id']) {
 					req.session.contactid = data.rows[0]['id'];
 					req.session.contactusername = data.rows[0]['username'];
-					console.log(req.session.username);
 		   			res.status(200).send({ id: data.rows[0]['id'], 
 										  username: data.rows[0]['username'] });				
 				} else {
-					res.status.(200).send("Error: You are already connected with that user.")
+					res.status(200).send("Error: You are already connected with that user.");
 				}
 			}); 
 		}	
