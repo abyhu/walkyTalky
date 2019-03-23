@@ -39,7 +39,7 @@ function addContact (req, res){
 			}	
 		});
 	}
-}
+});
 
 module.exports = {
 	addContact: addContact
