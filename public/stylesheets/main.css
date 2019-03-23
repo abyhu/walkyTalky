@@ -70,7 +70,7 @@ body {
 }
 
 #walkyMenu {
-	background-image: url('../images/walkyTalky.png');
+	background-image: url('../images/walkyTalky.png')
 }
 
 /*-----------------------HEADERS--------------------------*/
@@ -107,8 +107,9 @@ button {
 }
 
 .button {
-	padding: 2% 10% 5% 10%;
-	margin: 0 auto;
+	padding: 2% 5%;
+	width: 200px; 
+	margin: 0 auto 5% auto;
 }
 
 
