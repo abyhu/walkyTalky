@@ -19,12 +19,12 @@ function addContact (req, res){
 			res.status(400).send("An unknown error occurred.");
 		} else {
 			var contactid = data.rows[0]['id'];
-			sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::int, $2::int)';
+			sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::integer, $2::integer)';
 			values = [req.session.id, contactid];
 			pool.query(sql, values, function(err, data) {
 				if (err) {
 					console.log(err);
-					res.status(401).send("Error: There was a problem connect with that user.");
+					res.status(401).send("Error: There was a problem connecting with that user.");
 				} else {
 					//start a session and return the data
 					req.session.contactid = data.rows[0]['id'];
