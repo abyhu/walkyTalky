@@ -13,7 +13,7 @@ function addContact (req, res){
 	var sql = 'SELECT id, username FROM app_user WHERE username=$1::text';
 	var values = [username];
 	pool.query(sql, values, function (err, data) {
-		if (err) {
+		if (err || data.rows.length == 0) {
 			res.status(400).send("An unknown error occurred.");
 		} else {
 			var contactid = data.rows[0]['id'];
