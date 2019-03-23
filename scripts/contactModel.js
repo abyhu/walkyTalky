@@ -26,20 +26,21 @@ function addContact (req, res){
 					sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::integer, $2::integer)';
 					values = [req.session.userid, contactid];
 					pool.query(sql, values, function(err, data) {
-					console.log(data);
-					if (err) {
-						res.status(401).send("Error: There was a problem connecting with that user.");
-					} else {
-						req.session.contactid = data.rows[0]['id'];
-						req.session.contactusername = data.rows[0]['username'];
-						res.status(200).send({ id: data.rows[0]['id'], 
-											  username: data.rows[0]['username'] });				
-					}
-				});
-			}	
-		});
-	}
-});
+						console.log(data);
+						if (err) {
+							res.status(401).send("Error: There was a problem connecting with that user.");
+						} else {
+							req.session.contactid = data.rows[0]['id'];
+							req.session.contactusername = data.rows[0]['username'];
+							res.status(200).send({ id: data.rows[0]['id'], 
+												  username: data.rows[0]['username'] });			
+						}
+					});
+				}	
+			});
+		}
+	});
+}
 
 module.exports = {
 	addContact: addContact
