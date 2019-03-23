@@ -3,7 +3,7 @@ body {
 	font-family: 'Open Sans', sans-serif; 
 	padding: 0; 
 	margin: 0; 
-	background-image: url('images/background.png'));
+	background-image: url('../images/background.png'));
 }
 
 .container { 
