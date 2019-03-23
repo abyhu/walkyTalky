@@ -34,7 +34,7 @@ function login (req, res){
 	pool.query(sql, values, function (err, data) {
 		if (err) {
 			//there was a problem with authentication, send an error to the user
-			res.status(400).send("Error: " + err);
+			res.status(400).send("An unknown error occurred.");
 		} else {	
 			bcrypt.compare(password, data.rows[0]['password'], function(err, result) {
 				if (!result) {

@@ -20,7 +20,7 @@ function loginComplete(res, status, jqXHR) {
 	$('#login').hide(); 
 	$('#walkyTalky').show(); 
 	$('.error').html('');
-	$('#welcomeUser').html(res.username);
+	$('#welcomeUser').html(res.username);  
 }
 
 //callback function for a failed response - notice the change in the parameter order
