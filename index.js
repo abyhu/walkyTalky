@@ -19,13 +19,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(require('morgan')('dev'));
-//app.use(express.cookieParser());
 app.use(session({
 	name: 'server-session-cookie-id', 
 	secret: 'walkyTalkySecretKey', 
 	saveUninitialized: true, 
 	resave: true,
 	store: new FileStore()
+}));
+app.use(verifyLogin(req, res, next {
+	if(req.session.username != null && req.session.id != null) {
+		return next();
+	} else {
+		res.redirect('/');
+	}
 }));
 
 app.set('views', path.join(__dirname, 'views'));
