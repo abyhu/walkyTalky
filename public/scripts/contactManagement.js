@@ -7,7 +7,6 @@ $('#addNewContact').click(function(event) {
 });
 
 $('#addFriendForm').submit(function(event) {
-
 	//this prevents the POST default action
 	event.preventDefault();
 

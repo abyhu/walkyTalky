@@ -31,7 +31,7 @@ function addContact (req, res){
 		   			res.status(200).send({ id: data.rows[0]['id'], 
 										  username: data.rows[0]['username'] });				
 				} else {
-					res.status(200).send("Error: You are already connected with that user.");
+					res.status(401).send("Error: You are already connected with that user.");
 				}
 			}); 
 		}	
