@@ -81,7 +81,6 @@ h3 {
 }
 
 /*------------------BUTTONS AND LINKS---------------------*/
-
 button, .button {
 	width: 50%; 
 	margin: 0 auto; 
@@ -99,6 +98,27 @@ a {
 a:hover, a:visited {
 	color: #1786ab;
 }
+
+#selectConversation {
+	background-color: #ce3762;
+}
+
+#addNewContact {
+	background-color: #db7734;
+}
+
+#editMessage {
+	background-color: #ffbf00;
+}
+
+#deleteMessage { 
+	background-color: #2d9587;
+}
+
+#deleteContact {
+	background-color: #6a2c93;
+}
+
 
 /*---------------PARAGRAPHS AND SPANS------------------*/
 
