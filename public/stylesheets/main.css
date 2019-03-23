@@ -114,6 +114,7 @@ button, .button {
 	font-size: 1em; 
 	color: #fefefe; 
 	background-color: #1786abcc;
+	border: none;
 }
 
 button {
