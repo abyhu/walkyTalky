@@ -17,7 +17,7 @@ function addContact (req, res){
 			//there was a problem with authentication, send an error to the user
 			res.status(400).send("An unknown error occurred.");
 		} else {
-			var contactid = data[rows]['id'];
+			var contactid = data.rows[0]['id'];
 			sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::int, $2::int)';
 			values = [req.session.id, contactid];
 			pool.query(sql, values, function(err, data) {
