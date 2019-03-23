@@ -14,7 +14,8 @@ function addContact (req, res){
 	var values = [username];
 	pool.query(sql, values, function (err, data) {
 		if (err || data.rows.length > 0) {
-			res.status(400).send("An unknown error occurred.");
+			console.log(err);
+			res.status(400).send("Error: There was an unknown error.");
 		} else {
 			var contactid = data.rows[0]['id'];
 			sql = 'SELECT id FROM friend WHERE user1_id=$1::integer AND user2_id=$2::integer OR user1_id=$2::integer AND user2_id=$1::integer'; 
@@ -29,6 +30,7 @@ function addContact (req, res){
 					pool.query(sql, values, function(err, data) {
 						console.log(data);
 						if (err) {
+							console.log(err);
 							res.status(401).send("Error: There was a problem connecting with that user.");
 						} else {
 							req.session.contactid = data.rows[0]['id'];
