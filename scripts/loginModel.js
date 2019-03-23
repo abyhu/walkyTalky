@@ -55,8 +55,6 @@ function logout (req, res){
 	try {
 		//-------------------------SESSON END? SOMETHING NEEDS TO HAPPEN HERE TO LOGOUT THE USER
 		req.session.destroy(); 
-		console.log(req.session.id);
-		console.log(req.session.username);
 		res.render('pages/index'); 
 	} catch (err) {
 		console.error(err);
