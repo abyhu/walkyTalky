@@ -10,10 +10,14 @@ body {
 	margin: 0 auto; 
 }
 
+#walkyTitle {
+	background-color: darkgrey;
+}
+
 #login, #signup {
 	width: 30%;  
 	padding: 5% 5%; 
-	background-color: #cde3f5; 
+	background-color: darkgrey; 
 }
 
 #walkyTalky, #signup {
@@ -43,7 +47,7 @@ body {
 }
 
 .navigation li a {
-	color: #cde3f5;
+	color: #eeeeee;
 	text-decoration: none; 
 }
 
