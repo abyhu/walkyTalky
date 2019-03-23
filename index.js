@@ -39,8 +39,6 @@ function isAuthenticated(req, res, next) {
 	}
 }
 
-
-
 //setup routing for each of the functions and page redirects
 app.get('/', (req, res) => res.render('pages/index'));
 app.get('/instructions', (req, res) => res.render('pages/instructions'));

@@ -21,7 +21,7 @@ function loginComplete(res, status, jqXHR) {
 	$('#walkyTalky').show(); 
 	$('.error').html('');
 	//------------------------------------------------SHOULD START A SESSION WITH ID
-	$('#welcomeUser').html(res.userName);
+	$('#welcomeUser').html(req.session.username);
 }
 
 //callback function for a failed response - notice the change in the parameter order
