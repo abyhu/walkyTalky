@@ -26,7 +26,8 @@ app.use(session({
 	resave: true,
 	store: new FileStore()
 }));
-app.use(verifyLogin(req, res, next {
+
+function isAuthenticated(req, res, next {
 	if(req.session.username != null && req.session.id != null) {
 		return next();
 	} else {
@@ -42,7 +43,7 @@ app.get('/', (req, res) => res.render('pages/index'));
 app.get('/instructions', (req, res) => res.render('pages/instructions'));
 app.get('/references', (req, res) => res.render('pages/references'));
 app.post('/createAccount', urlencodedParser, loginModel.createAccount);
-app.post('/login', urlencodedParser, loginModel.login);
+app.post('/login', isAuthenticated, urlencodedParser, loginModel.login);
 app.get('/logout', loginModel.logout);
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
