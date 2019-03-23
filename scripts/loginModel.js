@@ -44,8 +44,6 @@ function login (req, res){
 					//start a session and return the data
 					req.session.id = data.rows[0]['id'];
 					req.session.username = data.rows[0]['username'];
-					console.log('Session id:' + req.session.id); 
-					console.log('Session name: ' + req.session.username);
 		   			res.status(200).send({ userId: data.rows[0]['id'], userName: data.rows[0]['username']});					
 				}
 			}); 
@@ -57,6 +55,8 @@ function logout (req, res){
 	try {
 		//-------------------------SESSON END? SOMETHING NEEDS TO HAPPEN HERE TO LOGOUT THE USER
 		req.session.destroy(); 
+		console.log(req.session.id);
+		console.log(req.session.username);
 		res.render('pages/index'); 
 	} catch (err) {
 		console.error(err);
