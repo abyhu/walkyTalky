@@ -14,7 +14,7 @@ body {
 	background-position: center;
 	margin: 0 auto;
 	width: 1000px;
-	padding: 5%;
+	padding-bottom: 5%;
 }
 
 .container { 
@@ -47,7 +47,7 @@ body {
 .navigation {
 	display: flex;
 	justify-content: space-between;
-	padding: 0;
+	padding: 0 5%;
 	margin: 0; 
 	
 }
@@ -101,7 +101,3 @@ a:hover, a:visited {
 }
 
 /*------------------PARAGRAPHS---------------------*/
-#login, #signup {
-	color: #fefefe;
-}
-
