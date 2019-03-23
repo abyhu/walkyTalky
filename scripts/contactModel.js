@@ -24,7 +24,7 @@ function addContact (req, res){
 			pool.query(sql, values, function(err, data) {
 				if (err) {
 					console.log(err);
-					res.status(401).send("Error: There was a problem connecting with that user.");
+					res.status(500).send("Error: There was a problem connecting with that user.");
 				} else {
 					res.status(200).send({ contactid: req.session.contactid, 
 											contactusername: req.session.contactusername, 
