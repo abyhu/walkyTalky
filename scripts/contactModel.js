@@ -18,7 +18,7 @@ function addContact (req, res){
 		} else {
 			var contactid = data.rows[0]['id'];
 			sql = 'SELECT id FROM friend WHERE user1_id=$1::string AND user2_id=$2::string OR user1_id=$2::string AND user2_id=$1::string'; 
-			values = [req.sess.userid, contactid];
+			values = [req.session.userid, contactid];
 			pool.query(sql, values, function(err, data) {
 				if (err) {
 					res.status(401).send("Error: You are already connected with that user.");
