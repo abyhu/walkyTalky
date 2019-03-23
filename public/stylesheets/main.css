@@ -9,11 +9,12 @@ body {
 
 .container { 
 	margin: 0 auto; 
-	background-color: #fefefe;
+	margin: 1% 2%;
+	
 }
 
-#walkyHeader { 
-	margin: 2% 5%;  
+#walkyHeader {  
+	background-color: #fefefe;
 }
 
 #login, #signup {
@@ -68,6 +69,10 @@ h1, h2 {
 
 h3 {
 	font-size: 1.30em; 
+}
+
+#walkyHeader h1 {
+	margin: 0 auto; 
 }
 
 /*------------------BUTTONS AND LINKS---------------------*/
