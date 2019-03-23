@@ -21,6 +21,7 @@ function addContact (req, res){
 			values = [req.session.userid, contactid];
 			pool.query(sql, values, function(err, data) {
 				if (err) {
+					console.log(err);
 					res.status(401).send("Error: You are already connected with that user.");
 				} else {
 					sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::integer, $2::integer)';
@@ -33,7 +34,7 @@ function addContact (req, res){
 							req.session.contactid = data.rows[0]['id'];
 							req.session.contactusername = data.rows[0]['username'];
 							res.status(200).send({ id: data.rows[0]['id'], 
-												  username: data.rows[0]['username'] });			
+												  username: data.rows[0]['username'] });	
 						}
 					});
 				}	
