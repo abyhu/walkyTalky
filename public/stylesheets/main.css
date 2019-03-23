@@ -34,7 +34,7 @@ body {
 	margin: 0 auto; 
 }
 
-#signup, #walkyTalky {
+#signup, #walkyTalky, #addContactInfo {
 	display: none;
 }
 
@@ -49,6 +49,10 @@ body {
 	margin-left: 5%;
 	background-color: #1786ab55;
 	border: solid #1786ab 2px;
+}
+
+#addContactInfo {
+	padding: 3%;
 }
 
 .sections {
@@ -137,13 +141,12 @@ button {
 	margin: 0 auto;
 }
 
-.button {
+.button, #conversation button {
 	padding: 4%;
 	width: 190px; 
 	margin: 0 auto 5% auto; 
 	color: white;
 }
-
 
 #selectConversation {
 	background-color: #ce3762;
