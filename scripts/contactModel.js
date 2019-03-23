@@ -69,5 +69,5 @@ function deleteContact (req, res) {
 
 module.exports = {
 	addContact: addContact, 
-	deleteContact: deleteContact
+	/*deleteContact: deleteContact*/
 };
