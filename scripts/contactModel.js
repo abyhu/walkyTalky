@@ -24,7 +24,7 @@ function addContact (req, res){
 				if (err) {
 					console.log(err);
 					res.status(401).send("Error: You are already connected with that user.");
-				} else if (data.rows.length > 0) {
+				} else if (data.rows.length < 1) {
 					sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::integer, $2::integer)';
 					values = [req.session.userid, contactid];
 					pool.query(sql, values, function(err, data) {
