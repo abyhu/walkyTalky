@@ -13,7 +13,7 @@ body {
 
 #walkyHeader {
 	background-color: #fefefe; 
-	padding: 2%, 5%; 
+	margin: 2% 5%;  
 }
 
 #login, #signup {
@@ -63,7 +63,7 @@ body {
 h1, h2 {
 	font-family: 'Sriracha', cursive;	
 	color: #1786ab; 
-	margin: 2% 5%;
+	margin: 0; 
 }
 
 h3 {
