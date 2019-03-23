@@ -8,12 +8,12 @@ const pool = new Pool({
 
 function addContact (req, res){
 	//----------------------------------------SHOULD VERIFY THERE IS NO SQL INJECTION
-	const username = req.body.username;
+	const contactusername = req.body.username;
 	
 	var sql = 'SELECT id, username FROM app_user WHERE username=$1::text';
-	var values = [username];
+	var values = [contactusername];
 	pool.query(sql, values, function (err, data) {
-		if (err || data.rows.length > 0) {
+		if (err || data.rows.length < 1) {
 			console.log(err);
 			res.status(400).send("Error: There was an unknown error.");
 		} else {
