@@ -18,6 +18,8 @@ const loginModel = require("./scripts/loginModel.js");
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 //start a session when someone is using the app
 app.use(session({
@@ -37,8 +39,7 @@ function isAuthenticated(req, res, next) {
 	}
 }
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+
 
 //setup routing for each of the functions and page redirects
 app.get('/', (req, res) => res.render('pages/index'));
