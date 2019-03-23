@@ -125,16 +125,16 @@ button {
 }
 
 .button {
-	padding: 2%;
+	padding: 4%;
 	width: 190px; 
-	margin: 0 auto 3% auto; 
+	margin: 0 auto 5% auto; 
 	color: white;
 }
 
 
 #selectConversation {
 	background-color: #ce3762;
-	margin-top: 215px;
+	margin-top: 225px;
 }
 
 #addNewContact {
