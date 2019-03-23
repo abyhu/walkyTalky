@@ -42,7 +42,7 @@ function login (req, res){
 					res.status(401).send("Error: The username or password is incorrect.");
 				} else {
 					//start a session and return the data
-					req.session.id = data.rows[0]['id'];
+					req.session.userid = data.rows[0]['id'];
 					req.session.username = data.rows[0]['username'];
 					console.log(req.session.username);
 		   			res.status(200).send({ id: data.rows[0]['id'], 
