@@ -122,7 +122,7 @@ button {
 }
 
 .button {
-	padding: 2%;
+	padding: 1% 2%;
 	width: 200px; 
 	margin: 0 auto 3% auto;
 	flex: 5; 
