@@ -16,8 +16,8 @@ $('#addFriendForm').submit(function(event) {
 	//call the POST action manually to connect with the nodeJS functions
 	$.post('/addContact', { username: username }) 
 			//because there is a response on success and failure setup two callbacks
-		  .done(loginComplete)
-		  .fail(loginFailed)		
+		  .done(addContactComplete)
+		  .fail(addContactFailed)		
 });
 
 //callback function for a successful response - notice the order of the parameters
@@ -29,6 +29,6 @@ function addContactComplete(res, status, jqXHR) {
 }
 
 //callback function for a failed response - notice the change in the parameter order
-function loginFailed(jqXHR, status, res) {
+function addContactFailed(jqXHR, status, res) {
 	$('.error').html(jqXHR.responseText);
 }
