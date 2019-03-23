@@ -52,7 +52,7 @@ body {
 }
 
 #addContactInfo {
-	padding: 3%;
+	padding: 5%;
 }
 
 .sections {
@@ -128,6 +128,7 @@ a:hover, a:visited {
 
 button, .button { 
 	margin: 0 auto; 
+	padding: 4%;
 	border-radius: 20px; 
 	font-size: 1em; 
 	color: #fefefe; 
@@ -136,23 +137,16 @@ button, .button {
 }
 
 button {
-	padding: 4% 5%;
 	width: 125px;
-	margin: 0 auto;
 }
 
 .button, {
-	padding: 4%;
 	width: 190px; 
 	margin: 0 auto 5% auto; 
-	color: white;
 }
 
 #conversation button {
-	padding: 2%;
 	width: 190px; 
-	margin: 0 auto 5% auto; 
-	color: white;
 }
 
 #selectConversation {
