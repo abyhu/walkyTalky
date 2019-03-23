@@ -1,3 +1,11 @@
+//when a user clicks the link to sign up for an account
+$('#addNewContact').click(function(event) {
+	event.preventDefault();
+	$('#welcomeMessage').hide();
+	$('#addContactInfo').show();
+	return false;
+});
+
 $('#addFriendForm').submit(function(event) {
 
 	//this prevents the POST default action
