@@ -23,7 +23,7 @@ function addContact (req, res){
 			pool.query(sql, values, function(err, data) {
 				if (err) {
 					console.log(err);
-					res.status(401).send("Error: You are already connected with that user.");
+					res.status(401).send("Error: There was a problem connecting with that user.");
 				} else if (data.rows.length < 1) {
 					sql = 'INSERT INTO friend (user1_id, user2_id) VALUES($1::integer, $2::integer)';
 					values = [req.session.userid, contactid];
@@ -31,7 +31,7 @@ function addContact (req, res){
 						console.log(data);
 						if (err) {
 							console.log(err);
-							res.status(401).send("Error: There was a problem connecting with that user.");
+							res.status(401).send("Error: You area already connected with that user.");
 						} else {
 							req.session.contactid = data.rows[0]['id'];
 							req.session.contactusername = data.rows[0]['username'];
