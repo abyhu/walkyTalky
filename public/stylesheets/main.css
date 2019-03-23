@@ -85,7 +85,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	height: 512px;
-	width: 300px;
+	width: 240px;
+    margin-left: 10%;
 }
 
 /*-----------------------HEADERS--------------------------*/
