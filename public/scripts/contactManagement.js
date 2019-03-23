@@ -25,7 +25,7 @@ function addContactComplete(res, status, jqXHR) {
 	$('#addContactInfo').hide(); 
 	$('#messages').show(); 
 	$('.error').html('');
-	$('#contactName').html(req.session.contactusername);  
+	$('#contactName').html(res.contactusername);  
 }
 
 //callback function for a failed response - notice the change in the parameter order
