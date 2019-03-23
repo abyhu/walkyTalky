@@ -14,6 +14,7 @@ function addContact (req, res){
 	var values = [username];
 	pool.query(sql, values, function (err, data) {
 		if (err) {
+			console.log(err);
 			//there was a problem with authentication, send an error to the user
 			res.status(400).send("An unknown error occurred.");
 		} else {
@@ -22,6 +23,7 @@ function addContact (req, res){
 			values = [req.session.id, contactid];
 			pool.query(sql, values, function(err, data) {
 				if (err) {
+					console.log(err);
 					res.status(401).send("Error: There was a problem connect with that user.");
 				} else {
 					//start a session and return the data
