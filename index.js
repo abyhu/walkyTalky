@@ -15,10 +15,19 @@ const urlencodedParser = bodyParser.urlencoded({extended:false});
 const loginModel = require("./scripts/loginModel.js");
 
 //establish file directories, parsers and view engines
-app.use(require('morgan')('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(require('morgan')('dev'));
+//app.use(express.cookieParser());
+app.use(session({
+	name: 'server-session-cookie-id', 
+	secret: 'walkyTalkySecretKey', 
+	saveUninitialized: true, 
+	resave: true,
+	store: new FileStore()
+}));
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 

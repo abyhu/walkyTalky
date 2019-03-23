@@ -33,14 +33,20 @@ function login (req, res){
 	var values = [username];
 	pool.query(sql, values, function (err, data) {
 		if (err) {
+			//there was a problem with authentication, send an error to the user
 			res.status(400).send("Error: " + err);
 		} else {	
 			bcrypt.compare(password, data.rows[0]['password'], function(err, result) {
 				if (!result) {
+					//login failed as password was not correct, send error message
 					res.status(401).send("Error: The username or password is incorrect.");
 				} else {
-					var param = data.rows[0]['id']; 
-		   			res.status(200).send({ userId: data.rows[0]['id'], userName: data.rows[0]['username']});	 
+					//start a session and return the data
+					req.session.id = data.rows[0]['id'];
+					req.session.username = data.rows[0]['username'];
+					console.log('Session id:' + res.session.id); 
+					console.log('Session name: ' + res.session.username);
+		   			res.status(200).send({ userId: data.rows[0]['id'], userName: data.rows[0]['username']});					
 				}
 			}); 
 		}	
@@ -50,8 +56,8 @@ function login (req, res){
 function logout (req, res){
 	try {
 		//-------------------------SESSON END? SOMETHING NEEDS TO HAPPEN HERE TO LOGOUT THE USER
+		req.session.destroy(); 
 		res.render('pages/index'); 
-
 	} catch (err) {
 		console.error(err);
 		res.send("Error " + err);
