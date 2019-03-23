@@ -88,7 +88,7 @@ button {
 	border-radius: 20px; 
 	padding: 2%;
 	font-size: 1em; 
-	color: #cde3f5; 
+	color: #fefefe; 
 	background-color: #1786abcc;
 }
 
@@ -100,6 +100,10 @@ a:hover, a:visited {
 	color: #1786ab;
 }
 
-/*------------------PARAGRAPHS---------------------*/
+/*---------------PARAGRAPHS AND SPANS------------------*/
+
+.error {
+	color: #ce3762;
+}
 
 
