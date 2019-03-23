@@ -34,7 +34,7 @@ body {
 	margin: 0 auto; 
 }
 
-#signup, #walkyTalky, #addContactInfo {
+#signup, #walkyTalky, #addContactInfo, #messages {
 	display: none;
 }
 
