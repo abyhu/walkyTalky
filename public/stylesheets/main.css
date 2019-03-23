@@ -12,15 +12,14 @@ body {
 }
 
 #walkyHeader {
-	background-color: #eeeeee;
-	margin: 2% 5%; 
+	background-color: #fefefe; 
 	padding: 2%, 5%; 
 }
 
 #login, #signup {
 	width: 30%;  
 	padding: 5% 5%; 
-	background-color: #eeeeee;
+	background-color: #fefefe;
 	border: solid #1786ab 3px;
 	margin-top: 5%; 
 }
