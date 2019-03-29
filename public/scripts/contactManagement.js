@@ -96,13 +96,12 @@ function selectConversationComplete(res, status, jqXHR) {
 	$('#welcomeMessage').hide();
 	
 	var listInnerHTML='';
-	res[3].forEach(function(rows) {
+	res['data'].forEach(function(rows) {
 		if (rows.sender_id == res[1]['userid']) {
 			listInnerHTML += '<p class="user">' + rows.message + '</>';
 		} else { 
 			listInnerHTML += '<p class="contact">' + rows.message + '</>';
 		}
-		
 	});
 }
 
