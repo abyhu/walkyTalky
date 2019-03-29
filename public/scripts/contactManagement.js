@@ -93,7 +93,7 @@ function selectConversationComplete(res, status, jqXHR) {
 	$('#messages').show(); 
 	$('#selectFriend').hide();
 	$('#welcomeMessage').hide();
-	console.log(res);
+
 	var listInnerHTML='';
 	res['data'].forEach(function(rows) {
 		if (rows.sender_id == parseInt(res['userid'])) {
@@ -102,6 +102,7 @@ function selectConversationComplete(res, status, jqXHR) {
 			listInnerHTML += '<p class="contact">' + rows.message + '</>';
 		}
 	});
+	$('#conversation').html(listInnerHTML);
 }
 
 //callback function for a failed response - notice the change in the parameter order
