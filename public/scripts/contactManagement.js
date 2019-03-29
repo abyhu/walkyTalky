@@ -98,9 +98,9 @@ function selectConversationComplete(res, status, jqXHR) {
 	var listInnerHTML='';
 	res['data'].forEach(function(rows) {
 		if (rows.sender_id == parseInt(res['userid'])) {
-			listInnerHTML += '<p class="user">' + rows.message + '</>';
+			listInnerHTML += '<p class="user">' + rows.sender_id + ': ' + rows.message + '</>';
 		} else { 
-			listInnerHTML += '<p class="contact">' + rows.message + '</>';
+			listInnerHTML += '<p class="contact">' + rows.sender_id + ': ' + rows.message + '</>';
 		}
 	});
 	$('#messages').html(listInnerHTML);
