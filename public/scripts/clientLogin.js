@@ -19,7 +19,11 @@ $('#loginForm').submit(function(event) {
 function loginComplete(res, status, jqXHR) {
 	$('#login').hide(); 
 	$('#walkyTalky').show(); 
+	$('#addContactInfo').hide(); 
 	$('.error').html('');
+	$('#messages').show(); 
+	$('#selectFriend').hide();
+	$('#welcomeMessage').hide();
 	$('#welcomeUser').html(res.username);  
 }
 
