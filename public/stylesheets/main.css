@@ -178,13 +178,15 @@ button {
 }
 
 .user {
-	margin: 2%, 10%, 2%, 5%;
+	width: 80%;
 	background-color: red;
+	padding: 2%;
 }
 
 .contact {
-	margin: 2%, 5%, 2%, 10%; 
+	width: 80%;
+	margin-left: 20%;
 	background-color: blue;
-	
+	padding 2%;
 }
 
