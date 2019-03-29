@@ -179,15 +179,15 @@ button {
 
 .user {
 	width: 80%;
-	background-color: #4d4e4c;
-	color: #cde3f5;
+	background-color: #2dc8;
+	color: #4d4e4c;
 	padding: 2%;
+	margin-left: 16%;
 }
 
 .contact {
 	width: 80%;
-	margin-right: 15%;
-	background-color: #2d9587;
+	background-color: #1786;
 	color: #4d4e4c;
 	padding: 2%;
 }
