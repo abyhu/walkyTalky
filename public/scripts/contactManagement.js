@@ -91,10 +91,19 @@ $('#selectFriendForm').submit(function(event) {
 function selectConversationComplete(res, status, jqXHR) {
 	$('#addContactInfo').hide(); 
 	$('.error').html('');
-	$('#contactName').html(res['contactusername']); 
 	$('#messages').show(); 
 	$('#selectFriend').hide();
 	$('#welcomeMessage').hide();
+	
+	var listInnerHTML='';
+	res[3].forEach(function(rows) {
+		if (rows.sender_id == res[1]['userid']) {
+			listInnerHTML += '<p class="user">' + rows.message + '</>';
+		} else { 
+			listInnerHTML += '<p class="contact">' + rows.message + '</>';
+		}
+		
+	});
 }
 
 //callback function for a failed response - notice the change in the parameter order
