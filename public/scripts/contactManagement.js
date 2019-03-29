@@ -59,7 +59,7 @@ function displayContactList(res, status, jqXHR) {
 	$('#messages').hide(); 
 	$('#selectFriend').show();
 	$('#welcomeMessage').hide();
-	console.log(res);
+
 	var listInnerHTML = '';
 	res.forEach(function(rows) {
 		listInnerHTML += '<option value="' + rows.username + '">' + rows.username + '</option>'	
@@ -93,7 +93,7 @@ function selectConversationComplete(res, status, jqXHR) {
 	$('#messages').show(); 
 	$('#selectFriend').hide();
 	$('#welcomeMessage').hide();
-	
+	console.log(res);
 	var listInnerHTML='';
 	res['data'].forEach(function(rows) {
 		if (rows.sender_id == res['data']['userid']) {
