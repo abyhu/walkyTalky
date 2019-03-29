@@ -49,6 +49,8 @@ app.get('/references', (req, res) => res.render('pages/references'));
 app.post('/createAccount', urlencodedParser, loginModel.createAccount);
 app.post('/login', urlencodedParser, loginModel.login);
 app.post('/addContact', isAuthenticated, urlencodedParser, contactManagementModel.addContact);
+app.post('/contactList', isAuthenticated, urlencodedParser, contactManagementModel.getContactList);
+app.post('/selectConversation', isAuthenticated, urlencodedParser, contactManagementModel.selectConversation);
 app.get('/logout', loginModel.logout);
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));

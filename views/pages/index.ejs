@@ -52,7 +52,11 @@
 						<h3>Welcome to Walky Talky <span id=welcomeUser></span>!</h3>
 					</div>
 					<div id="selectFriend">
-						
+						<form method='post' id='selectFriendForm'>
+							<p><select id="contactListSelect"></select></p>
+							<p><span class="error"></span></p>
+							<button type='submit' name='selectContact'>Add Contact</button>
+						</form>
 					</div>
 					<div id="addContactInfo">
 						<form method='post' id='addFriendForm'>
