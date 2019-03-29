@@ -97,7 +97,7 @@ function selectConversationComplete(res, status, jqXHR) {
 	
 	var listInnerHTML='';
 	res['data'].forEach(function(rows) {
-		if (rows.sender_id == res[1]['userid']) {
+		if (rows.sender_id == res['data']['userid']) {
 			listInnerHTML += '<p class="user">' + rows.message + '</>';
 		} else { 
 			listInnerHTML += '<p class="contact">' + rows.message + '</>';
