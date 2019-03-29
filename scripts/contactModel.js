@@ -46,7 +46,7 @@ function getContactList (req, res) {
 			console.log(err);
 			res.status(500).send("Error: There was a problem creating your contact list.");
 		} else {
-			res.status(200).send(data);
+			res.status(200).send(data.rows);
 		}
 	});
 }
