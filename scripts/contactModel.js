@@ -53,27 +53,14 @@ function getContactList (req, res) {
 
 function selectConversation (req, res) {
 	var contactusername = req.body.contactusername;
-	values = [contactusername];
-	pool.query(sql, values, function (err, data) {
+	sql = 'SELECT m.id, m.sender_id, m.receiver_id, m.message, timestamp FROM app_user a JOIN message m ON m.receiver_id = a.id JOIN message m2 ON m2.receiver_id = $1::integer WHERE username = $2::text ORDER BY m.timestamp'; 
+	values = [req.session.userid, contactusername];
+	pool.query(sql, values, function(err, data) {
 		if (err) {
 			console.log(err);
-			res.status(400).send("Error: There was a problem connecting with that user.");
+			res.status(500).send("Error: There was a problem connecting with that user.");
 		} else {
-			try {
-				req.session.contactid = data.rows[0]['id'];
-				sql = 'SELECT m.id, m.sender_id, m.receiver_id, m.message, timestamp FROM app_user a JOIN message m ON m.receiver_id = a.id JOIN message m2 ON m2.receiver_id = $1::integer WHERE username = $2::text ORDER BY m.timestamp'; 
-				values = [req.session.userid, contactusername];
-				pool.query(sql, values, function(err, data) {
-					if (err) {
-						console.log(err);
-						res.status(500).send("Error: There was a problem connecting with that user.");
-					} else {
-						res.status(200).send({contactusername: contactusername, userid: req.session.userid, username: req.session.username, data.rows});
-					}
-				});
-			} catch {
-				res.status(400).send("Error: That was a problem opening the conversation with that user.");	   
-			}
+			res.status(200).send({contactusername: contactusername, userid: req.session.userid, username: req.session.username, data.rows});
 		}
 	});
 }
