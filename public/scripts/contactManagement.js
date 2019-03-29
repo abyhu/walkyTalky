@@ -56,11 +56,12 @@ function displayContactList(res, status, jqXHR) {
 	$('#addContactInfo').hide(); 
 	$('.error').html('');
 	$('#contactName').html(res.contactusername); 
-	$('#messages').show(); 
+	$('#messages').hide(); 
 	$('#selectFriend').show();
 	$('#welcomeMessage').hide();
 	
 	var listInnerHTML = '';
+	console.log(res);
 	res.forEach(function(rows) {
 		listInnerHTML += '<option value="' + rows.username + '">' + rows.username + '</option>'	
 	});
