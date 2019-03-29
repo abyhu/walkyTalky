@@ -52,9 +52,8 @@ function getContactList (req, res) {
 }
 
 function selectConversation (req, res) {
-	req.session.contactusername = req.body.contactusername;
-	var sql = 'SELECT id FROM app_user WHERE username = $1::text';
-	values = [req.session.contactusername];
+	var contactusername = req.body.contactusername;
+	values = [contactusername];
 	pool.query(sql, values, function (err, data) {
 		if (err) {
 			console.log(err);
@@ -62,14 +61,14 @@ function selectConversation (req, res) {
 		} else {
 			try {
 				req.session.contactid = data.rows[0]['id'];
-				sql = 'SELECT id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $1::integer AND receiver_id = $2::integer'; 
-				values = [req.session.userid, req.session.contactid];
+				sql = 'SELECT m.id, m.sender_id, m.receiver_id, m.message, timestamp FROM app_user a JOIN message m ON m.receiver_id = a.id JOIN message m2 ON m2.receiver_id = $1::integer WHERE username = $2::text ORDER BY m.timestamp'; 
+				values = [req.session.userid, contactusername];
 				pool.query(sql, values, function(err, data) {
 					if (err) {
 						console.log(err);
 						res.status(500).send("Error: There was a problem connecting with that user.");
 					} else {
-						res.status(200).send(data);
+						res.status(200).send({contactusername: contactusername, userid: req.session.userid, username: req.session.username, data.rows});
 					}
 				});
 			} catch {

@@ -91,10 +91,11 @@ $('#selectFriendForm').submit(function(event) {
 function selectConversationComplete(res, status, jqXHR) {
 	$('#addContactInfo').hide(); 
 	$('.error').html('');
-	$('#contactName').html(res.contactusername); 
+	$('#contactName').html(''); 
 	$('#messages').show(); 
 	$('#selectFriend').hide();
 	$('#welcomeMessage').hide();
+	console.log(res);
 }
 
 //callback function for a failed response - notice the change in the parameter order
