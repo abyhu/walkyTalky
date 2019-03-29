@@ -61,9 +61,9 @@ function displayContactList(res, status, jqXHR) {
 	$('#welcomeMessage').hide();
 	
 	var listInnerHTML = '';
-	res.forEach(function(rows)) {
+	res.forEach(function(rows) {
 		listInnerHTML += '<option value="' + rows.username + '">' + rows.username + '</option>'	
-	}
+	});
 }
 
 //callback function for a failed response - notice the change in the parameter order
