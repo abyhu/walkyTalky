@@ -95,6 +95,7 @@ function selectConversation (req, res) {
 
 module.exports = {
 	addContact: addContact, 
-	getContactList: getContactList
+	getContactList: getContactList. 
+	selectConversation: selectConversation,
 	/*deleteContact: deleteContact*/
 };
