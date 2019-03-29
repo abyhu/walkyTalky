@@ -49,6 +49,7 @@ $('#selectConversation').click(function(event) {
 			//because there is a response on success and failure setup two callbacks
 		  .done(displayContactList)
 		  .fail(getContactListFailed)
+	return false;
 });
 
 //callback function for a successful response - notice the order of the parameters
