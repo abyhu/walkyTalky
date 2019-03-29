@@ -51,7 +51,7 @@ body {
 	border: solid #1786ab 2px;
 }
 
-#addContactInfo {
+#addContactInfo, #selectFriend {
 	padding: 5%;
 }
 
@@ -112,7 +112,7 @@ h3 {
 	font-size: 1.30em; 
 }
 
-#welcomeMessage h3, #messages h3 {
+#welcomeMessage h3 {
 	margin: 50% auto; 
 	text-align: center;
 }
