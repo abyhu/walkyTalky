@@ -59,9 +59,8 @@ function displayContactList(res, status, jqXHR) {
 	$('#messages').hide(); 
 	$('#selectFriend').show();
 	$('#welcomeMessage').hide();
-	
-	var listInnerHTML = '';
 	console.log(res);
+	var listInnerHTML = '';
 	res.forEach(function(rows) {
 		listInnerHTML += '<option value="' + rows.username + '">' + rows.username + '</option>'	
 	});
