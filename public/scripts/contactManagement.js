@@ -38,7 +38,7 @@ function addContactFailed(jqXHR, status, res) {
 }
 
 //when a user clicks the link to sign up for an account
-$('#selectFriend').click(function(event) {
+$('#selectConversation').click(function(event) {
 	event.preventDefault();
 	$('#addContactInfo').hide();
 	$('.error').html('');
