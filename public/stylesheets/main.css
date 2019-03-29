@@ -177,4 +177,14 @@ button {
 	color: #ce3762;
 }
 
+.user {
+	margin: 2%, 10%, 2%, 5%;
+	background-color: red;
+}
+
+.contact {
+	margin: 2%, 5%, 2%, 10%; 
+	background-color: blue;
+	
+}
 
