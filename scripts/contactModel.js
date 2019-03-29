@@ -53,7 +53,7 @@ function getContactList (req, res) {
 
 function selectConversation (req, res) {
 	var contactusername = req.body.contactusername;
-	sql = 'SELECT m.id, m.sender_id, m.receiver_id, m.message, timestamp FROM app_user a JOIN message m ON m.receiver_id = a.id JOIN message m2 ON m2.receiver_id = $1::integer WHERE username = $2::text ORDER BY m.timestamp'; 
+	sql = 'SELECT m.id, m.sender_id, m.receiver_id, m.message, m.timestamp FROM app_user a JOIN message m ON m.receiver_id = a.id JOIN message m2 ON m2.receiver_id = $1::integer WHERE username = $2::text ORDER BY m.timestamp'; 
 	values = [req.session.userid, contactusername];
 	pool.query(sql, values, function(err, data) {
 		if (err) {
