@@ -23,7 +23,7 @@ function loginComplete(res, status, jqXHR) {
 	$('.error').html('');
 	$('#messages').hide(); 
 	$('#selectFriend').hide();
-	$('#welcomeMessage').hide();
+	$('#welcomeMessage').show();
 	$('#welcomeUser').html(res.username);  
 }
 
