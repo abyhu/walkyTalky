@@ -205,3 +205,8 @@ input {
 	font-size: 18px;
 }
 
+#messageText {
+	height: 5%px;
+	width: 75%;
+}
+
