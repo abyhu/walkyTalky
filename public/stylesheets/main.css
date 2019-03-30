@@ -206,7 +206,7 @@ input {
 }
 
 #messageText {
-	height: 8%;
+	height: 30px !important;
 	width: 75%;
 }
 
