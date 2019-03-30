@@ -40,7 +40,7 @@ function insertMessage (req, res) {
 			console.log(err);
 			res.status(500).send("Error: There was a problem sending your message.");
 		} else {
-			sql = 'SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $1::integer AND receiver_id = 2::integer UNION SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $2::integer AND receiver_id = $1::integer ORDER BY tmp.timestamp;'; 
+			sql = 'SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $1::integer AND receiver_id = $2::integer UNION SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $2::integer AND receiver_id = $1::integer ORDER BY timestamp;'; 
 			values = [req.session.userid, req.session.contactid];
 			pool.query(sql, values, function(err, data) {
 				console.log(data);
