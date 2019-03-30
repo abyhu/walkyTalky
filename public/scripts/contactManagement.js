@@ -127,10 +127,32 @@ $('#deleteContact').click(function(event) {
 	$('#welcomeMessage').hide();
 	$.post('/contactList')
 			//because there is a response on success and failure setup two callbacks
-		  .done(displayContactList)
-		  .fail(getContactListFailed)
+		  .done(deleteContactList)
+		  .fail(getDeleteContactListFailed)
 	return false;
 });
+
+//callback function for a successful response - notice the order of the parameters
+function deleteContactList(res, status, jqXHR) {
+	$('#addContactInfo').hide(); 
+	$('#deleteFriend').show();
+	$('.error').html('');
+	$('#contactName').html(res.contactusername); 
+	$('#messages').hide(); 
+	$('#selectFriend').hide();
+	$('#welcomeMessage').hide();
+
+	var listInnerHTML = '';
+	res.forEach(function(rows) {
+		listInnerHTML += '<option value="' + rows.username + '">' + rows.username + '</option>'	
+	});
+	$('.contactListSelect').html(listInnerHTML);
+}
+
+//callback function for a failed response - notice the change in the parameter order
+function getDeleteContactListFailed(jqXHR, status, res) {
+	$('.error').html(jqXHR.responseText);
+}
 
 $('#deleteFriendForm').submit(function(event) {
 	//this prevents the POST default action
