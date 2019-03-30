@@ -9,7 +9,6 @@ const pool = new Pool({
 
 function selectConversation (req, res) {
 	req.session.contactusername = req.body.contactusername;
-	
 	sql = 'SELECT id FROM app_user WHERE username = $1::text';
 	values = [req.session.contactusername];
 	pool.query(sql, values, function(err, data) {
@@ -19,7 +18,7 @@ function selectConversation (req, res) {
 		} else {
 			req.session.contactid = data.rows[0]['id'];
 			sql = 'SELECT * FROM (SELECT message.id, sender_id, receiver_id, message, timestamp from message WHERE sender_id = $1::integer AND receiver_id = 2::integer UNION SELECT message.id, sender_id, receiver_id, message, timestamp from message WHERE sender_id = $2::integer AND receiver_id = $1::integer) tmp ORDER BY tmp.timestamp;'; 
-			values = [req.session.contactusername, req.session.userid];
+			values = [req.session.contactid, req.session.userid];
 			pool.query(sql, values, function(err, data) {
 				if (err) {
 					console.log(err);
