@@ -53,6 +53,7 @@ function getContactList (req, res) {
 
 function removeContact (req, res) {
 	const contactusername = req.body.contactusername;
+	console.log(contactusername);
 	var sql = 'DELETE FROM friend JOIN app_user ON friend.user2_id = app_user.id WHERE user1_id=$1::integer AND app_user.username = $2::text'; 
 	values = [req.session.userid, contactusername];
 	pool.query(sql, values, function (err, data) {
@@ -60,7 +61,7 @@ function removeContact (req, res) {
 			console.log(err);
 			res.status(500).send("Error: There was a problem deleting that contact.");
 		} else {
-			res.status(200).send("DELETED now need to adjust the page.");
+			res.status(204).send();
 		}
 	});  
 }
