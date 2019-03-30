@@ -52,7 +52,7 @@ body {
 	overflow: auto;
 }
 
-#addContactInfo, #selectFriend {
+#addContactInfo, #selectFriend, #deleteFriend {
 	padding: 5%;
 }
 
