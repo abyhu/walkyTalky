@@ -10,7 +10,7 @@ const pool = new Pool({
 function selectChat (req, res) {
 	req.session.contactusername = req.body.contactusername;
 	sql = 'SELECT id FROM app_user WHERE username = $1::text';
-	values = [req.session.contactusername];
+	values = [req.body.contactusername];
 	pool.query(sql, values, function(err, data) {
 		if (err) {
 			console.log(err);
