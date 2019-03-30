@@ -57,7 +57,8 @@ $('#selectConversation').click(function(event) {
 
 //callback function for a successful response - notice the order of the parameters
 function displayContactList(res, status, jqXHR) {
-	$('#addContactInfo').hide(); 
+	$('#addContactInfo').hide();
+	$('.contactListSelect').html('');
 	$('#deleteFriend').hide();
 	$('.error').html('');
 	$('#contactName').html(res.contactusername); 
@@ -120,6 +121,7 @@ function selectConversationFailed(jqXHR, status, res) {
 $('#deleteContact').click(function(event) {
 	event.preventDefault();
 	$('#addContactInfo').hide();
+	$('.contactListSelect').html('');
 	$('#deleteFriend').show();
 	$('.error').html('');
 	$('#messages').hide();
@@ -135,9 +137,9 @@ $('#deleteContact').click(function(event) {
 //callback function for a successful response - notice the order of the parameters
 function deleteContactList(res, status, jqXHR) {
 	$('#addContactInfo').hide(); 
+	$('#contactName').html(res.contactusername);
 	$('#deleteFriend').show();
 	$('.error').html('');
-	$('#contactName').html(res.contactusername); 
 	$('#messages').hide(); 
 	$('#selectFriend').hide();
 	$('#welcomeMessage').hide();
@@ -171,6 +173,7 @@ $('#deleteFriendForm').submit(function(event) {
 //callback function for a successful response - notice the order of the parameters
 function deleteContactComplete(res, status, jqXHR) {
 	$('#addContactInfo').hide(); 
+	$('.contactListSelect').html('');
 	$('#deleteFriend').hide();
 	$('.error').html('');
 	$('#messages').hide(); 
