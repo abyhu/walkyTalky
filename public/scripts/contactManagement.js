@@ -6,6 +6,7 @@ $('#addNewContact').click(function(event) {
 	$('.error').html('');
 	$('#messages').hide();
 	$('#selectFriend').hide();
+	$('#usernameAddFriend').val(''); 
 	$('#welcomeMessage').hide();
 	return false;
 });

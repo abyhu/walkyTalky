@@ -9,7 +9,6 @@ const pool = new Pool({
 function addContact (req, res){
 	//----------------------------------------SHOULD VERIFY THERE IS NO SQL INJECTION
 	const contactusername = req.body.username;
-	
 	var sql = 'SELECT id, username FROM app_user WHERE username=$1::text';
 	var values = [contactusername];
 	pool.query(sql, values, function (err, data) {
