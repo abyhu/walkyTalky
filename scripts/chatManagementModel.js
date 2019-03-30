@@ -17,7 +17,7 @@ function selectConversation (req, res) {
 			res.status(500).send("Error: There was a problem connecting with that user.");
 		} else {
 			req.session.contactid = data.rows[0]['id'];
-			sql = 'SELECT * FROM (SELECT message.id, sender_id, receiver_id, message, timestamp from message WHERE sender_id = $1::integer AND receiver_id = 2::integer UNION SELECT (message.id, sender_id, receiver_id, message, timestamp) FROM message WHERE sender_id = $2::integer AND receiver_id = $1::integer) tmp ORDER BY tmp.timestamp;'; 
+			sql = 'SELECT * FROM (SELECT message.id, sender_id, receiver_id, message, timestamp) FROM message WHERE sender_id = $1::integer AND receiver_id = 2::integer UNION SELECT (message.id, sender_id, receiver_id, message, timestamp) FROM message WHERE sender_id = $2::integer AND receiver_id = $1::integer) tmp ORDER BY tmp.timestamp;'; 
 			values = [req.session.contactid, req.session.userid];
 			pool.query(sql, values, function(err, data) {
 				if (err) {
@@ -39,7 +39,7 @@ function insertMessage (req, res) {
 			console.log(err);
 			res.status(500).send("Error: There was a problem sending your message.");
 		} else {
-			sql = 'SELECT * FROM (SELECT message.id, sender_id, receiver_id, message, timestamp from message WHERE sender_id = $1::integer AND receiver_id = 2::integer UNION SELECT (message.id, sender_id, receiver_id, message, timestamp) FROM message WHERE sender_id = $2::integer AND receiver_id = $1::integer) tmp ORDER BY tmp.timestamp;'; 
+			sql = 'SELECT * FROM (SELECT message.id, sender_id, receiver_id, message, timestamp)  FROM message WHERE sender_id = $1::integer AND receiver_id = 2::integer UNION SELECT (message.id, sender_id, receiver_id, message, timestamp) FROM message WHERE sender_id = $2::integer AND receiver_id = $1::integer) tmp ORDER BY tmp.timestamp;'; 
 			values = [req.session.contactid, req.session.userid];
 			pool.query(sql, values, function(err, data) {
 				if (err) {
