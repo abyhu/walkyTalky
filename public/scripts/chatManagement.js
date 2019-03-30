@@ -21,7 +21,7 @@ function selectConversationComplete(res, status, jqXHR) {
 	$('#welcomeMessage').hide();
 
 	var listInnerHTML='';
-	console.log(data);
+	console.log(res['data]');
 	res['data'].forEach(function(rows) {
 		if (rows.sender_id == res['userid']) {
 			listInnerHTML += '<p class="user">' + res['username'] + ':<br>' + rows.message + '</>';
