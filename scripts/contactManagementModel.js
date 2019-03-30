@@ -63,7 +63,7 @@ function removeContact (req, res) {
 			res.status(200).send("DELETED now need to adjust the page.");
 		}
 	});  
-}*/
+}
 
 module.exports = {
 	addContact: addContact, 
