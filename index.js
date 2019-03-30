@@ -51,7 +51,7 @@ app.post('/createAccount', urlencodedParser, loginModel.createAccount);
 app.post('/login', urlencodedParser, loginModel.login);
 app.post('/addContact', isAuthenticated, urlencodedParser, contactManagementModel.addContact);
 app.post('/contactList', isAuthenticated, urlencodedParser, contactManagementModel.getContactList);
-app.post('/selectConversation', isAuthenticated, urlencodedParser, chatManagementModel.selectConversation);
+app.post('/selectConversation', isAuthenticated, urlencodedParser, chatManagementModel.selectChat);
 app.post('/sendMessage', isAuthenticated, urlencodedParser, chatManagementModel.insertMessage);
 app.get('/logout', loginModel.logout);
 

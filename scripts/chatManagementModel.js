@@ -7,7 +7,7 @@ const pool = new Pool({
 });
 
 
-function selectConversation (req, res) {
+function selectChat (req, res) {
 	req.session.contactusername = req.body.contactusername;
 	sql = 'SELECT id FROM app_user WHERE username = $1::text';
 	values = [req.session.contactusername];
@@ -54,6 +54,6 @@ function insertMessage (req, res) {
 }
 
 module.exports = {
-	selectConversation: selectConversation,
+	selectChat: selectChat,
 	insertMessage: insertMessage
 };
