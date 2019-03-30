@@ -17,7 +17,8 @@ $('#loginForm').submit(function(event) {
 
 //callback function for a successful response - notice the order of the parameters
 function loginComplete(res, status, jqXHR) {
-	$('#login').hide(); 
+	$('#login').hide();
+	$('#deleteFriend').hide();
 	$('#walkyTalky').show(); 
 	$('#addContactInfo').hide(); 
 	$('.error').html('');
