@@ -22,7 +22,7 @@ function selectConversationComplete(res, status, jqXHR) {
 
 	var listInnerHTML='';
 	res['data'].forEach(function(rows) {
-		console.log(rows.sender_id);
+		console.log(rows);
 		if (rows.sender_id == parseInt(res['userid'])) {
 			listInnerHTML += '<p class="user">' + res['username'] + ':<br>' + rows.message + '</>';
 		} else { 
