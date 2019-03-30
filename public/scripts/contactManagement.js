@@ -85,7 +85,7 @@ $('#deleteFriendForm').submit(function(event) {
 	event.preventDefault();
 
 	//establish variables
-	var contactusername = $('.contactListSelect').val(); 
+	var contactusername = $('.contactListDelete').val(); 
 
 	//call the POST action manually to connect with the nodeJS functions
 	$.post('/deleteContact', { contactusername: contactusername }) 
@@ -97,7 +97,6 @@ $('#deleteFriendForm').submit(function(event) {
 //callback function for a successful response - notice the order of the parameters
 function deleteContactComplete(res, status, jqXHR) {
 	$('#addContactInfo').hide(); 
-	$('.contactListSelect').html('');
 	$('#deleteFriend').hide();
 	$('.error').html('');
 	$('#messages').hide(); 
