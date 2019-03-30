@@ -14,7 +14,8 @@ $('#selectFriendForm').submit(function(event) {
 
 //callback function for a successful response - notice the order of the parameters
 function selectConversationComplete(res, status, jqXHR) {
-	$('#addContactInfo').hide(); 
+	$('#addContactInfo').hide();
+	$('#deleteFriend').hide();
 	$('.error').html('');
 	$('#messages').show(); 
 	$('#selectFriend').hide();

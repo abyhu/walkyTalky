@@ -51,7 +51,7 @@ function getContactList (req, res) {
 	});
 }
 
-/*function deleteContact (req, res) {
+function removeContact (req, res) {
 	const contactuserid = req.body.contactuserid;
 	var sql = 'DELETE FROM friend WHERE user1_id=$1::integer AND user2_id=$2::integer'; 
 	values = [req.session.userid, contactuserid];
@@ -68,5 +68,5 @@ function getContactList (req, res) {
 module.exports = {
 	addContact: addContact, 
 	getContactList: getContactList, 
-	/*deleteContact: deleteContact*/
+	removeContact: removeContact
 };
