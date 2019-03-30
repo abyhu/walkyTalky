@@ -135,7 +135,7 @@ button, .button {
 	border: none;
 }
 
-button {
+button, #sendMessageBtn {
 	width: 125px;
 }
 
