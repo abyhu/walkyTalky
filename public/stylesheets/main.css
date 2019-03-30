@@ -150,7 +150,7 @@ button {
 }
 
 #sendMessageBtn {
-	width: 50px;
+	width: 50px !important;
 }
 
 #selectConversation {
