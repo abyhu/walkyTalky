@@ -54,7 +54,7 @@ function getContactList (req, res) {
 function removeContact (req, res) {
 	const contactusername = req.body.contactusername;
 	console.log(contactusername);
-	var sql = 'DELETE FROM friend WHERE friend.user1_id = $1::integer AND friend.user2_id = (SELECT id FROM app_user WHERE username = $2::text;'; 
+	var sql = 'DELETE FROM friend WHERE friend.user1_id = $1::integer AND friend.user2_id = (SELECT id FROM app_user WHERE username = $2::text);'; 
 	values = [req.session.userid, contactusername];
 	pool.query(sql, values, function (err, data) {
 		if (err) {
