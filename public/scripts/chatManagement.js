@@ -42,7 +42,7 @@ $('#selectFriendForm').submit(function(event) {
 	event.preventDefault();
 
 	//establish variables
-	var contactusername = $('#contactListSelect').val(); 
+	var contactusername = $('.contactListSelect').val(); 
 
 	//call the POST action manually to connect with the nodeJS functions
 	$.post('/selectConversation', { contactusername: contactusername }) 
