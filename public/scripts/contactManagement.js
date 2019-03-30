@@ -85,7 +85,7 @@ $('#deleteFriendForm').submit(function(event) {
 	event.preventDefault();
 
 	//establish variables
-	var contactusername = $('.contactListSelect').val(); 
+	var contactusername = $('.contactListSelect option:selected').val(); 
 
 	//call the POST action manually to connect with the nodeJS functions
 	$.post('/deleteContact', { contactusername: contactusername }) 
