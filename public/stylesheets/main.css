@@ -133,15 +133,24 @@ button, .button {
 	color: #fefefe; 
 	background-color: #1786abcc;
 	border: none;
-	width: 125px;
-	margin: 0 auto 5% auto; 
 }
 
+button {
+	width: 125px;
+}
 
+.button {
+	width: 190px; 
+	margin: 0 auto 5% auto; 
+}
 
 #conversation button {
 	width: 190px; 
 	padding: 2%;
+}
+
+#sendMessageBtn {
+	width: 50px;
 }
 
 #selectConversation {
