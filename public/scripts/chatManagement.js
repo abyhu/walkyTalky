@@ -66,6 +66,6 @@ function sendMessageComplete(res, status, jqXHR) {
 }
 
 //callback function for a failed response - notice the change in the parameter order
-function selectConversationFailed(jqXHR, status, res) {
+function sendMessageFailed(jqXHR, status, res) {
 	$('.error').html(jqXHR.responseText);
 }
