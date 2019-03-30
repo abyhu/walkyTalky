@@ -6,6 +6,18 @@ const pool = new Pool({
 	ssl: true
 });
 
+function getContactList (req, res) {
+	var sql = 'SELECT c.id id, c.username username FROM app_user c JOIN friend f ON c.id = f.user2_id WHERE f.user1_id = $1::integer INTERSECT SELECT c.id id, c.username username FROM app_user c JOIN friend f ON c.id = f.user1_id WHERE f.user2_id = $1::integer'; 
+	values = [req.session.userid];
+	pool.query(sql, values, function (err, data) {
+		if (err) {
+			console.log(err);
+			res.status(500).send("Error: There was a problem creating your contact list.");
+		} else {
+			res.status(200).send(data.rows);
+		}
+	});
+}
 
 function selectChat (req, res) {
 	req.session.contactusername = req.body.contactusername;
@@ -54,84 +66,7 @@ function insertMessage (req, res) {
 }
 
 module.exports = {
+	getContactList: getContactList,
 	selectChat: selectChat,
 	insertMessage: insertMessage
 };
-
-//when a user clicks the link to sign up for an account
-$('#selectConversation').click(function(event) {
-	event.preventDefault();
-	$('#addContactInfo').hide();
-	$('#deleteFriend').hide();
-	$('.error').html('');
-	$('#messages').hide();
-	$('#selectFriend').hide();
-	$('#welcomeMessage').hide();
-	$.post('/contactList')
-			//because there is a response on success and failure setup two callbacks
-		  .done(displayContactList)
-		  .fail(getContactListFailed)
-	return false;
-});
-
-//callback function for a successful response - notice the order of the parameters
-function displayContactList(res, status, jqXHR) {
-	$('#addContactInfo').hide();
-	$('.contactListSelect').html('');
-	$('#deleteFriend').hide();
-	$('.error').html('');
-	$('#contactName').html(res.contactusername); 
-	$('#messages').hide(); 
-	$('#selectFriend').show();
-	$('#welcomeMessage').hide();
-
-	var listInnerHTML = '';
-	res.forEach(function(rows) {
-		listInnerHTML += '<option value="' + rows.username + '">' + rows.username + '</option>'	
-	});
-	$('.contactListSelect').html(listInnerHTML);
-}
-
-//callback function for a failed response - notice the change in the parameter order
-function getContactListFailed(jqXHR, status, res) {
-	$('.error').html(jqXHR.responseText);
-}
-
-$('#selectFriendForm').submit(function(event) {
-	//this prevents the POST default action
-	event.preventDefault();
-
-	//establish variables
-	var contactusername = $('.contactListSelect').val(); 
-
-	//call the POST action manually to connect with the nodeJS functions
-	$.post('/selectConversation', { contactusername: contactusername }) 
-			//because there is a response on success and failure setup two callbacks
-		  .done(selectConversationComplete)
-		  .fail(selectConversationFailed)		
-});
-
-//callback function for a successful response - notice the order of the parameters
-function selectConversationComplete(res, status, jqXHR) {
-	$('#addContactInfo').hide();
-	$('#deleteFriend').hide();
-	$('.error').html('');
-	$('#messages').show(); 
-	$('#selectFriend').hide();
-	$('#welcomeMessage').hide();
-
-	var listInnerHTML='';
-	res['data'].forEach(function(rows) {
-		if (rows.sender_id == parseInt(res['userid'])) {
-			listInnerHTML += '<p class="user">' + res['username'] + ':<br>' + rows.message + '</>';
-		} else { 
-			listInnerHTML += '<p class="contact">' + res['contactusername'] + ':<br>' + rows.message + '</>';
-		}
-	});
-	$('#messageList').html(listInnerHTML);
-}
-
-//callback function for a failed response - notice the change in the parameter order
-function selectConversationFailed(jqXHR, status, res) {
-	$('.error').html(jqXHR.responseText);
-}

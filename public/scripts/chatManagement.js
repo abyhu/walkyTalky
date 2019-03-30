@@ -1,3 +1,42 @@
+//when a user clicks the link to select a friend to chat with
+$('#selectConversation').click(function(event) {
+	event.preventDefault();
+	$('#addContactInfo').hide();
+	$('#deleteFriend').hide();
+	$('.error').html('');
+	$('#messages').hide();
+	$('#selectFriend').hide();
+	$('#welcomeMessage').hide();
+	$.post('/selectContactList')
+			//because there is a response on success and failure setup two callbacks
+		  .done(displayContactList)
+		  .fail(getContactListFailed)
+	return false;
+});
+
+//callback function for a successful response - notice the order of the parameters
+function displayContactList(res, status, jqXHR) {
+	$('#addContactInfo').hide();
+	$('.contactListSelect').html('');
+	$('#deleteFriend').hide();
+	$('.error').html('');
+	$('#contactName').html(res.contactusername); 
+	$('#messages').hide(); 
+	$('#selectFriend').show();
+	$('#welcomeMessage').hide();
+
+	var listInnerHTML = '';
+	res.forEach(function(rows) {
+		listInnerHTML += '<option value="' + rows.username + '">' + rows.username + '</option>'	
+	});
+	$('.contactListSelect').html(listInnerHTML);
+}
+
+//callback function for a failed response - notice the change in the parameter order
+function getContactListFailed(jqXHR, status, res) {
+	$('.error').html(jqXHR.responseText);
+}
+
 $('#selectFriendForm').submit(function(event) {
 	//this prevents the POST default action
 	event.preventDefault();

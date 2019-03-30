@@ -5,8 +5,7 @@ $('#addNewContact').click(function(event) {
 	$('#deleteFriend').hide();
 	$('.error').html('');
 	$('#messages').hide();
-	$('#selectFriend').hide();
-	$('#usernameAddFriend').val(''); 
+	$('#selectFriend').hide(); 
 	$('#welcomeMessage').hide();
 	return false;
 });
@@ -51,7 +50,7 @@ $('#deleteContact').click(function(event) {
 	$('#messages').hide();
 	$('#selectFriend').hide();
 	$('#welcomeMessage').hide();
-	$.post('/contactList')
+	$.post('/deleteContactList')
 			//because there is a response on success and failure setup two callbacks
 		  .done(deleteContactList)
 		  .fail(getDeleteContactListFailed)
