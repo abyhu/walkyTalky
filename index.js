@@ -14,6 +14,7 @@ const urlencodedParser = bodyParser.urlencoded({extended:false});
 //include all the different files with scripts to be included in the project
 const loginModel = require("./scripts/loginModel.js");
 const contactManagementModel = require("./scripts/contactManagementModel.js");
+const chatManagementModel = require("./scripts/chatManagementModel.js");
 
 //establish file directories, parsers and view engines
 app.use(express.static(path.join(__dirname, 'public')));
@@ -50,7 +51,7 @@ app.post('/createAccount', urlencodedParser, loginModel.createAccount);
 app.post('/login', urlencodedParser, loginModel.login);
 app.post('/addContact', isAuthenticated, urlencodedParser, contactManagementModel.addContact);
 app.post('/contactList', isAuthenticated, urlencodedParser, contactManagementModel.getContactList);
-app.post('/selectConversation', isAuthenticated, urlencodedParser, contactManagementModel.selectConversation);
+app.post('/selectConversation', isAuthenticated, urlencodedParser, chatManagementModel.selectConversation);
 app.get('/logout', loginModel.logout);
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
