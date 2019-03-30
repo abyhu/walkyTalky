@@ -22,8 +22,7 @@ function selectConversationComplete(res, status, jqXHR) {
 
 	var listInnerHTML='';
 	res['data'].forEach(function(rows) {
-		console.log(rows);
-		if (rows.sender_id == parseInt(res['userid'])) {
+		if (rows.sender_id == res['userid']) {
 			listInnerHTML += '<p class="user">' + res['username'] + ':<br>' + rows.message + '</>';
 		} else { 
 			listInnerHTML += '<p class="contact">' + res['contactusername'] + ':<br>' + rows.message + '</>';
