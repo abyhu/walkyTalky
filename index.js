@@ -54,7 +54,7 @@ app.post('/login', urlencodedParser, loginModel.login);
 app.post('/addContact', isAuthenticated, urlencodedParser, contactManagementModel.addContact);
 app.post('/deleteContactList', isAuthenticated, urlencodedParser, contactManagementModel.getContactList);
 app.post('/deleteContact', isAuthenticated, urlencodedParser, contactManagementModel.removeContact);
-app.post('selectContactList', isAuthenticated, urlencodedParser, chatManagementModel.getContactList);
+app.post('/selectContactList', isAuthenticated, urlencodedParser, chatManagementModel.getContactList);
 app.post('/selectConversation', isAuthenticated, urlencodedParser, chatManagementModel.selectChat);
 app.post('/sendMessage', isAuthenticated, urlencodedParser, chatManagementModel.insertMessage);
 
