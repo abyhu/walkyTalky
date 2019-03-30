@@ -18,7 +18,7 @@ function selectConversation (req, res) {
 			res.status(500).send("Error: There was a problem connecting with that user.");
 		} else {
 			req.session.contactid = data.rows[0]['id'];
-			sql = 'SELECT * FROM (SELECT message.id, sender_id, receiver_id, message, timestamp from message JOIN app_user ON app_user.id = message.receiver_id WHERE username = $1::text UNION SELECT message.id, sender_id, receiver_id, message, timestamp from message JOIN app_user ON app_user.id = message.sender_id WHERE username = $1::text AND receiver_id = $2::integer) tmp ORDER BY tmp.timestamp;'; 
+			sql = 'SELECT * FROM (SELECT message.id, sender_id, receiver_id, message, timestamp from message WHERE sender_id = $1::integer AND receiver_id = 2::integer UNION SELECT message.id, sender_id, receiver_id, message, timestamp from message WHERE sender_id = $2::integer AND receiver_id = $1::integer) tmp ORDER BY tmp.timestamp;'; 
 			values = [req.session.contactusername, req.session.userid];
 			pool.query(sql, values, function(err, data) {
 				if (err) {
