@@ -34,6 +34,7 @@ function login (req, res){
 	pool.query(sql, values, function (err, data) {
 		if (err || data.rows < 1) {
 			//there was a problem with authentication, send an error to the user
+			console.log(err);
 			res.status(400).send("An error occured, do you need to create an account?");
 		} else {	
 			bcrypt.compare(password, data.rows[0]['password'], function(err, result) {
@@ -44,7 +45,6 @@ function login (req, res){
 					//start a session and return the data
 					req.session.userid = data.rows[0]['id'];
 					req.session.username = data.rows[0]['username'];
-					console.log(req.session.username);
 		   			res.status(200).send({ id: data.rows[0]['id'], 
 										  username: data.rows[0]['username'] });				
 				}
@@ -59,7 +59,7 @@ function logout (req, res){
 		req.session.destroy(); 
 		res.render('pages/index'); 
 	} catch (err) {
-		console.error(err);
+		console.log(err);
 		res.send("Error " + err);
 	}
 }

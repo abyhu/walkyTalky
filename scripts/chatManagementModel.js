@@ -16,7 +16,6 @@ function selectChat (req, res) {
 			console.log(err);
 			res.status(500).send("Error: There was a problem connecting with that user.");
 		} else {
-			console.log(data.rows[0]['id']);
 			req.session.contactid = data.rows[0]['id'];
 			sql = 'SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $1::integer AND receiver_id = $2::integer UNION SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $2::integer AND receiver_id = $1::integer ORDER BY timestamp;'; 
 			values = [req.session.userid, req.session.contactid];
@@ -43,7 +42,6 @@ function insertMessage (req, res) {
 			sql = 'SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $1::integer AND receiver_id = $2::integer UNION SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $2::integer AND receiver_id = $1::integer ORDER BY timestamp;'; 
 			values = [req.session.userid, req.session.contactid];
 			pool.query(sql, values, function(err, data) {
-				console.log(data);
 				if (err) {
 					console.log(err);
 					res.status(500).send("Error: There was a problem receiving new messages.");
