@@ -6,7 +6,7 @@ $('#addNewContact').click(function(event) {
 	$('.error').html('');
 	$('#messages').hide();
 	$('#selectFriend').hide(); 
-	$('#usernameAddFriend').html('');
+	$('#usernameAddFriend').text('');
 	$('#welcomeMessage').hide();
 	return false;
 });
@@ -72,7 +72,7 @@ function deleteContactList(res, status, jqXHR) {
 	res.forEach(function(rows) {
 		listInnerHTML += '<option value="' + rows.username + '">' + rows.username + '</option>'	
 	});
-	$('.contactListSelect').html(listInnerHTML);
+	$('.contactListDelete').html(listInnerHTML);
 }
 
 //callback function for a failed response - notice the change in the parameter order

@@ -175,7 +175,7 @@ button {
 	background-color: #6a2c93;
 }
 
-.contactListSelect {
+.contactListSelect, .contactListDelete {
 	font-size: 18px;
     margin-left: 5%;
 }
