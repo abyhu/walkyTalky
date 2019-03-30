@@ -134,6 +134,7 @@ button, .button {
 	background-color: #1786abcc;
 	border: none;
 	width: 125px;
+	margin: 0 auto 5% auto; 
 }
 
 
