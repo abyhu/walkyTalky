@@ -103,7 +103,7 @@ function selectConversationComplete(res, status, jqXHR) {
 			listInnerHTML += '<p class="contact">' + res['contactusername'] + ':<br>' + rows.message + '</>';
 		}
 	});
-	$('#messages').html(listInnerHTML);
+	$('#messageList').html(listInnerHTML);
 }
 
 //callback function for a failed response - notice the change in the parameter order
