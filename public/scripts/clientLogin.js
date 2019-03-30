@@ -21,7 +21,7 @@ function loginComplete(res, status, jqXHR) {
 	$('#walkyTalky').show(); 
 	$('#addContactInfo').hide(); 
 	$('.error').html('');
-	$('#messages').show(); 
+	$('#messages').hide(); 
 	$('#selectFriend').hide();
 	$('#welcomeMessage').hide();
 	$('#welcomeUser').html(res.username);  
