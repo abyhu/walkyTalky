@@ -150,7 +150,7 @@ button {
 }
 
 #sendMessageBtn {
-	width: 50px !important;
+	width: 100px !important;
 }
 
 #selectConversation {
@@ -199,5 +199,9 @@ button {
 	background-color: #1786;
 	color: #4d4e4c;
 	padding: 2%;
+}
+
+input {
+	font-size: 18px;
 }
 
