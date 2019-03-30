@@ -54,7 +54,6 @@ function insertMessage (req, res) {
 	});
 }
 
-
 module.exports = {
 	selectConversation: selectConversation,
 	insertMessage: insertMessage

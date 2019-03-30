@@ -36,7 +36,7 @@ function selectConversationFailed(jqXHR, status, res) {
 	$('.error').html(jqXHR.responseText);
 }
 
-$('#sendMessageBtn').submit(function(event) {
+$('#saveMessage').submit(function(event) {
 	//this prevents the POST default action
 	event.preventDefault();
 
