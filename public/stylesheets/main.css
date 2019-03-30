@@ -208,5 +208,6 @@ input {
 #messageText {
 	height: 30px !important;
 	width: 75%;
+	margin-left: 1%;
 }
 
