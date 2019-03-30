@@ -63,6 +63,7 @@ function sendMessageComplete(res, status, jqXHR) {
 		}
 	});
 	$('#messageList').html(listInnerHTML);
+	$('#messageText').val('');
 }
 
 //callback function for a failed response - notice the change in the parameter order
