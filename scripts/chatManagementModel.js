@@ -25,7 +25,7 @@ function selectConversation (req, res) {
 					console.log(err);
 					res.status(500).send("Error: There was a problem connecting with that user.");
 				} else {
-					res.status(200).send({contactusername: res.session.contactusername, userid: req.session.userid, username: req.session.username, data: data.rows});
+					res.status(200).send({contactusername: req.session.contactusername, userid: req.session.userid, username: req.session.username, data: data.rows});
 				}
 			});
 		}
