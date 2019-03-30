@@ -16,7 +16,7 @@ function selectChat (req, res) {
 			console.log(err);
 			res.status(500).send("Error: There was a problem connecting with that user.");
 		} else {
-			req.session.contactid = data.rows[0]['id'];
+			req.session.contactid = data.rows[0]['userid'];
 			console.log(req.session.userid);
 			sql = 'SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $1::integer AND receiver_id = $2::integer UNION SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $2::integer AND receiver_id = $1::integer ORDER BY timestamp;'; 
 			values = [req.session.userid, req.session.contactid];
