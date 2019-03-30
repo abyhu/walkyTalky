@@ -126,17 +126,18 @@ a:hover, a:visited {
 	color: #1786ab;
 }
 
-button, .button { 
+button { 
 	padding: 4%;
 	border-radius: 20px; 
 	font-size: 1em; 
 	color: #fefefe; 
 	background-color: #1786abcc;
 	border: none;
+	width: 125px;
 }
 
 button {
-	width: 125px;
+	
 }
 
 .button {
