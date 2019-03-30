@@ -49,14 +49,11 @@ body {
 	margin-left: 5%;
 	background-color: #1786ab55;
 	border: solid #1786ab 2px;
+	overflow: auto;
 }
 
 #addContactInfo, #selectFriend {
 	padding: 5%;
-}
-
-#messages {
-	overflow: auto;
 }
 
 .sections {
