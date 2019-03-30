@@ -176,16 +176,6 @@ function deleteContactComplete(res, status, jqXHR) {
 	$('#messages').hide(); 
 	$('#selectFriend').hide();
 	$('#welcomeMessage').show();
-
-	var listInnerHTML='';
-	res['data'].forEach(function(rows) {
-		if (rows.sender_id == parseInt(res['userid'])) {
-			listInnerHTML += '<p class="user">' + res['username'] + ':<br>' + rows.message + '</>';
-		} else { 
-			listInnerHTML += '<p class="contact">' + res['contactusername'] + ':<br>' + rows.message + '</>';
-		}
-	});
-	$('#messageList').html(listInnerHTML);
 }
 
 //callback function for a failed response - notice the change in the parameter order
