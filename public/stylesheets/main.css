@@ -135,7 +135,7 @@ button, .button {
 	border: none;
 }
 
-button, #sendMessageBtn {
+button, {
 	width: 125px;
 }
 
@@ -147,6 +147,10 @@ button, #sendMessageBtn {
 #conversation button {
 	width: 190px; 
 	padding: 2%;
+}
+
+#sendMessageBtn {
+	width: 50px;
 }
 
 #selectConversation {
