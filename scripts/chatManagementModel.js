@@ -65,8 +65,31 @@ function insertMessage (req, res) {
 	});
 }
 
+function updateMessage (req, res) {
+	sql = 'INSERT INTO message (sender_id, receiver_id, message, timestamp) VALUES ($1::integer, $2::integer, $3::text, now());';
+	values = [req.session.userid, req.session.contactid, req.body.message];
+	pool.query(sql, values, function(err, data) {
+		if (err) {
+			console.log(err);
+			res.status(500).send("Error: There was a problem sending your message.");
+		} else {
+			sql = 'SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $1::integer AND receiver_id = $2::integer UNION SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $2::integer AND receiver_id = $1::integer ORDER BY timestamp;'; 
+			values = [req.session.userid, req.session.contactid];
+			pool.query(sql, values, function(err, data) {
+				if (err) {
+					console.log(err);
+					res.status(500).send("Error: There was a problem receiving new messages.");
+				} else {
+					res.status(200).send({contactusername: req.session.contactusername, userid: req.session.userid, username: req.session.username, data: data.rows});
+				}
+			});
+		}
+	});
+}
+
 module.exports = {
 	getContactList: getContactList,
 	selectChat: selectChat,
-	insertMessage: insertMessage
+	insertMessage: insertMessage, 
+	updateMessage: updateMessage
 };

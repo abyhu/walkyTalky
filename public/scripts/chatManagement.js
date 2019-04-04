@@ -1,3 +1,6 @@
+var editingMessage = false; 
+var messageId = '';
+
 //when a user clicks the link to select a friend to chat with
 $('#selectConversation').click(function(event) {
 	event.preventDefault();
@@ -76,36 +79,58 @@ function selectConversationComplete(res, status, jqXHR) {
 	$('#messageList').html(listInnerHTML);
 }
 
+$('#sendMessage').submit(function(event) {
+	//this prevents the POST default action
+	event.preventDefault();
+
+	//establish variables
+	var message = $('#messageText').val(); 
+
+	//call the POST action manually to connect with the nodeJS functions
+	if (editingMessage) {
+		$.post('/editMessage', { message: message }) 
+			//because there is a response on success and failure setup two callbacks
+		  .done(sendMessageComplete)
+		  .fail(sendMessageFailed)
+		
+	} else {
+		$.post('/sendMessage', { message: message }) 
+			//because there is a response on success and failure setup two callbacks
+		  .done(sendMessageComplete)
+		  .fail(sendMessageFailed)
+	}
+			
+});
+
+//callback function for a successful response - notice the order of the parameters
+function sendMessageComplete(res, status, jqXHR) {
+	$('.error').html('');
+
+	var listInnerHTML = '';
+	res['data'].forEach(function(rows) {
+		if (rows.sender_id == parseInt(res['userid'])) {
+			listInnerHTML += '<p class="user" id="' + rows.id + '">' + res['username'] + ':<br><span class="userMessage">' + rows.message + '</span></>';  
+		} else { 
+			listInnerHTML += '<p class="contact" id="' + rows.id + '">' + res['contactusername'] + ':<br><span>' + rows.message + '</span></>';
+		}
+	});
+	$('#messageList').html(listInnerHTML);
+	$('#messageText').val('');
+}
+
 //callback function for a failed response - notice the change in the parameter order
-function selectConversationFailed(jqXHR, status, res) {
+function sendMessageFailed(jqXHR, status, res) {
 	$('.error').html(jqXHR.responseText);
 }
 
 $('#editMessage').click(function(event) {
+	//this prevents the POST default action
+	event.preventDefault();
+	editingMessage = true;
 	//populate the send message input with the value of the last message sent by the user
 	var messages = document.getElementsByClassName('userMessage');
 	var message = messages[messages.length-1].innerHTML;
-	console.log(message);
+	messageId = messages[messages.length-1].id;
+	console.log(messageId);
 	$('#messageText').val(message); 	
 });
-
-////callback function for a successful response - notice the order of the parameters
-//function sendMessageComplete(res, status, jqXHR) {
-//	$('.error').html('');
-//	console.log(rows);
-//	var listInnerHTML = '';
-//	res['data'].forEach(function(rows) {
-//		if (rows.sender_id == parseInt(res['userid'])) {
-//			listInnerHTML += '<p class="user" id="' + rows.id + '">' + res['username'] + ':<br>' + rows.message + '</>';  
-//		} else { 
-//			listInnerHTML += '<p class="contact" id="' + rows.id + '">' + res['contactusername'] + ':<br>' + rows.message + '</>';
-//		}
-//	});
-//	$('#messageList').html(listInnerHTML);
-//	$('#messageText').val('');
-//}
-//
-////callback function for a failed response - notice the change in the parameter order
-//function sendMessageFailed(jqXHR, status, res) {
-//	$('.error').html(jqXHR.responseText);
-//}
