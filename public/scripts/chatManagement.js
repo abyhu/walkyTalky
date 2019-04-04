@@ -85,7 +85,6 @@ function selectConversationFailed(jqXHR, status, res) {
 }
 
 $('#sendMessage').submit(function(event) {
-	var socket = io();
 	//this prevents the POST default action
 	event.preventDefault();
 
