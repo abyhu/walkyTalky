@@ -84,7 +84,7 @@ function selectConversationFailed(jqXHR, status, res) {
 $('#editMessage').click(function(event) {
 	//populate the send message input with the value of the last message sent by the user
 	var messages = document.getElementsByClassName('user');
-	var message = items[items.length-1].innerHTML;
+	var message = messages[messages.length-1].innerHTML;
 	console.log(message);
 	$('#messageText').val(message); 	
 });
