@@ -68,9 +68,9 @@ function selectConversationComplete(res, status, jqXHR) {
 	var listInnerHTML='';
 	res['data'].forEach(function(rows) {
 		if (rows.sender_id == parseInt(res['userid'])) {
-			listInnerHTML += '<p class="user" id="' + rows.id + '">' + res['username'] + ':<br>' + rows.message + '</>';  
+			listInnerHTML += '<p class="user" id="' + rows.id + '">' + res['username'] + ':<br><span>' + rows.message + '</span></>';  
 		} else { 
-			listInnerHTML += '<p class="contact" id="' + rows.id + '">' + res['contactusername'] + ':<br>' + rows.message + '</>';
+			listInnerHTML += '<p class="contact" id="' + rows.id + '">' + res['contactusername'] + ':<br><span>' + rows.message + '</span></>';
 		}
 	});
 	$('#messageList').html(listInnerHTML);
@@ -83,7 +83,7 @@ function selectConversationFailed(jqXHR, status, res) {
 
 $('#editMessage').click(function(event) {
 	//populate the send message input with the value of the last message sent by the user
-	var message = $('#messageList:last-child').html();
+	var message = $('#messageList:last-child span').html();
 	console.log(message);
 	$('#messageText').val(message); 	
 });
