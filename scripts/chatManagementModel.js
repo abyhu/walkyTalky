@@ -94,7 +94,6 @@ function updateMessage (req, res) {
 
 function removeMessage (req, res) {
 	var messageId = req.body.messageId;
-	console.log(message);
 	console.log(messageId);
 	sql = 'DELETE FROM message WHERE id = $2::integer;';
 	values = [messageId];
