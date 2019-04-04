@@ -92,9 +92,36 @@ function updateMessage (req, res) {
 	});
 }
 
+function removeMessage (req, res) {
+	var messageId = req.body.messageId;
+	console.log(message);
+	console.log(messageId);
+	sql = 'DELETE FROM message WHERE id = $2::integer;';
+	values = [messageId];
+	pool.query(sql, values, function(err, data) {
+		if (err) {
+			console.log(err);
+			res.status(500).send("Error: There was a problem deleting your message.");
+		} else {
+			sql = 'SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $1::integer AND receiver_id = $2::integer UNION SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $2::integer AND receiver_id = $1::integer ORDER BY timestamp;'; 
+			values = [req.session.userid, req.session.contactid];
+			pool.query(sql, values, function(err, data) {
+				if (err) {
+					console.log(err);
+					res.status(500).send("Error: There was a problem receiving new messages.");
+				} else {
+					console.log(data);
+					res.status(200).send({contactusername: req.session.contactusername, userid: req.session.userid, username: req.session.username, data: data.rows});
+				}
+			});
+		}
+	});
+}
+
 module.exports = {
 	getContactList: getContactList,
 	selectChat: selectChat,
 	insertMessage: insertMessage, 
-	updateMessage: updateMessage
+	updateMessage: updateMessage, 
+	removeMessage: removeMessage
 };

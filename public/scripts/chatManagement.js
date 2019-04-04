@@ -143,3 +143,16 @@ $('#editMessage').click(function(event) {
 	console.log(messageId);
 	$('#messageText').val(message); 	
 });
+
+$('#deleteMessage').click(function(event) {
+	//this prevents the POST default action
+	event.preventDefault();
+	//populate the send message input with the value of the last message sent by the user
+	var messages = document.getElementsByClassName('userMessage');
+	messageId = messages[messages.length-1].id;
+	
+	$.post('/deleteMessage', { messageId: messageId }) 
+			//because there is a response on success and failure setup two callbacks
+		  .done(sendMessageComplete)
+		  .fail(sendMessageFailed)
+});

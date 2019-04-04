@@ -58,6 +58,7 @@ app.post('/selectContactList', isAuthenticated, urlencodedParser, chatManagement
 app.post('/selectConversation', isAuthenticated, urlencodedParser, chatManagementModel.selectChat);
 app.post('/sendMessage', isAuthenticated, urlencodedParser, chatManagementModel.insertMessage);
 app.post('/editMessage', isAuthenticated, urlencodedParser, chatManagementModel.updateMessage);
+app.post('/deleteMessage', isAuthenticated, urlencodedParser, chatManagementModel.removeMessage);
 
 app.get('/logout', loginModel.logout);
 
