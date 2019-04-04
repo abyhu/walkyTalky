@@ -157,11 +157,11 @@ button {
 
 #addNewContact {
 	background-color: #ce3762;
-}
+	margin-top: 225px;
 
 #selectConversation {
 	background-color: #db7734;
-	margin-top: 225px;
+	
 }
 
 #deleteContact {
