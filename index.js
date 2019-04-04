@@ -66,16 +66,7 @@ app.get('/logout', loginModel.logout);
 
 
 io.on('connection', function (client) {
-  client.on('register', handleRegister);
-  client.on('join', handleJoin);
-  client.on('leave', handleLeave);
-  client.on('message', handleMessage);
-  client.on('chatrooms', handleGetChatrooms);
-  client.on('availableUsers', handleGetAvailableUsers);
-  client.on('disconnect', function () {
-    console.log('client disconnect...', client.id);
-    handleDisconnect();
-  });
+  client.on('connect');
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
