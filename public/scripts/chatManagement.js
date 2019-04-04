@@ -86,7 +86,7 @@ $('#editMessage').click(function(event) {
 	event.preventDefault();
 
 	//populate the send message input with the value of the last message sent by the user
-	var message = $('.user:last-of-type').val();
+	var message = $('#messageList:last-child').val();
 	$('#messageText').val(message); 	
 });
 
