@@ -3,6 +3,8 @@ $('#addNewContact').click(function(event) {
 	event.preventDefault();
 	$('#addContactInfo').show();
 	$('#deleteFriend').hide();
+	$('#deleteMessage').css("visibility", "hidden");
+	$('#editMessage').css("visibility", "hidden");
 	$('.error').html('');
 	$('#messages').hide();
 	$('#selectFriend').hide(); 
@@ -30,6 +32,8 @@ $('#addFriendForm').submit(function(event) {
 function addContactComplete(res, status, jqXHR) {
 	$('#addContactInfo').hide();
 	$('#deleteFriend').hide();
+	$('#deleteMessage').css("visibility", "hidden");
+	$('#editMessage').css("visibility", "hidden");
 	$('.error').html('');
 	$('#messages').hide(); 
 	$('#selectFriend').hide();
@@ -47,6 +51,8 @@ $('#deleteContact').click(function(event) {
 	$('#addContactInfo').hide();
 	$('.contactListSelect').html('');
 	$('#deleteFriend').show();
+	$('#deleteMessage').css("visibility", "hidden");
+	$('#editMessage').css("visibility", "hidden");
 	$('.error').html('');
 	$('#messages').hide();
 	$('#selectFriend').hide();
@@ -63,6 +69,8 @@ function deleteContactList(res, status, jqXHR) {
 	$('#addContactInfo').hide(); 
 	$('#contactName').html(res.contactusername);
 	$('#deleteFriend').show();
+	$('#deleteMessage').css("visibility", "hidden");
+	$('#editMessage').css("visibility", "hidden");
 	$('.error').html('');
 	$('#messages').hide(); 
 	$('#selectFriend').hide();
@@ -98,6 +106,8 @@ $('#deleteFriendForm').submit(function(event) {
 function deleteContactComplete(res, status, jqXHR) {
 	$('#addContactInfo').hide(); 
 	$('#deleteFriend').hide();
+	$('#deleteMessage').css("visibility", "hidden");
+	$('#editMessage').css("visibility", "hidden");
 	$('.error').html('');
 	$('#messages').hide(); 
 	$('#selectFriend').hide();

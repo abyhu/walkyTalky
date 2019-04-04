@@ -3,6 +3,8 @@ $('#selectConversation').click(function(event) {
 	event.preventDefault();
 	$('#addContactInfo').hide();
 	$('#deleteFriend').hide();
+	$('#deleteMessage').css("visibility", "visible");
+	$('#editMessage').css("visibility", "visible");
 	$('.error').html('');
 	$('#messages').hide();
 	$('#selectFriend').hide();
@@ -19,6 +21,8 @@ function displayContactList(res, status, jqXHR) {
 	$('#addContactInfo').hide();
 	$('.contactListSelect').html('');
 	$('#deleteFriend').hide();
+	$('#deleteMessage').css("visibility", "hidden");
+	$('#editMessage').css("visibility", "hidden");
 	$('.error').html('');
 	$('#contactName').html(res.contactusername); 
 	$('#messages').hide(); 
