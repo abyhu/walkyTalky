@@ -70,9 +70,5 @@ io.on('connection', function(socket){
         console.log(data);
     });
 });
-socket.on('joined', function(data) {
-        console.log(data);
-		socket.emit('acknowledge', 'Acknowledged');
-    });
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
