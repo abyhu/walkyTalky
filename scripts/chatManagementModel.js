@@ -95,7 +95,7 @@ function updateMessage (req, res) {
 function removeMessage (req, res) {
 	var messageId = req.body.messageId;
 	console.log(messageId);
-	sql = 'DELETE FROM message WHERE id = $2::integer;';
+	sql = 'DELETE FROM message WHERE id = $1::integer;';
 	values = [messageId];
 	pool.query(sql, values, function(err, data) {
 		if (err) {
