@@ -154,25 +154,28 @@ button {
 	width: 100px !important;
 }
 
-#selectConversation {
+
+#addNewContact {
 	background-color: #ce3762;
+}
+
+#selectConversation {
+	background-color: #db7734;
 	margin-top: 225px;
 }
 
-#addNewContact {
-	background-color: #db7734;
-}
-
-#editMessage {
+#deleteContact {
 	background-color: #ffbf00;
 }
 
-#deleteMessage { 
+#editMessage {
 	background-color: #2d9587;
+	visibility: hidden;
 }
 
-#deleteContact {
+#deleteMessage { 
 	background-color: #6a2c93;
+	visibility: hidden;
 }
 
 .contactListSelect, .contactListDelete {
