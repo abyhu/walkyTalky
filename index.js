@@ -1,8 +1,8 @@
 //include libraries and setup express and port
 const express = require('express');
 const app = express(); 
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 var session = require('express-session');
@@ -66,9 +66,6 @@ app.get('/logout', loginModel.logout);
 
 io.on('connection', function(socket){
     console.log('a user connected');
-    socket.on('joined', function(data) {
-        console.log(data);
-    });
 });
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
