@@ -68,7 +68,7 @@ function selectConversationComplete(res, status, jqXHR) {
 	var listInnerHTML='';
 	res['data'].forEach(function(rows) {
 		if (rows.sender_id == parseInt(res['userid'])) {
-			listInnerHTML += '<p class="user" id="' + rows.id + '">' + res['username'] + ':<br><span>' + rows.message + '</span></>';  
+			listInnerHTML += '<p class="user" id="' + rows.id + '">' + res['username'] + ':<br><span class="userMessage">' + rows.message + '</span></>';  
 		} else { 
 			listInnerHTML += '<p class="contact" id="' + rows.id + '">' + res['contactusername'] + ':<br><span>' + rows.message + '</span></>';
 		}
@@ -83,7 +83,7 @@ function selectConversationFailed(jqXHR, status, res) {
 
 $('#editMessage').click(function(event) {
 	//populate the send message input with the value of the last message sent by the user
-	var messages = document.getElementsByClassName('user').getElementByTagName('span');
+	var messages = document.getElementsByClassName('userMessage');
 	var message = messages[messages.length-1].innerHTML;
 	console.log(message);
 	$('#messageText').val(message); 	
