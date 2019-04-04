@@ -110,6 +110,8 @@ $('#sendMessage').submit(function(event) {
 //callback function for a successful response - notice the order of the parameters
 function sendMessageComplete(res, status, jqXHR) {
 	$('.error').html('');
+	editingMessage = false; 
+	messageId = '';
 
 	var listInnerHTML = '';
 	res['data'].forEach(function(rows) {
@@ -126,6 +128,8 @@ function sendMessageComplete(res, status, jqXHR) {
 //callback function for a failed response - notice the change in the parameter order
 function sendMessageFailed(jqXHR, status, res) {
 	$('.error').html(jqXHR.responseText);
+	editingMessage = false; 
+	messageId = '';
 }
 
 $('#editMessage').click(function(event) {

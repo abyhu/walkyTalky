@@ -66,12 +66,12 @@ function insertMessage (req, res) {
 }
 
 function updateMessage (req, res) {
-	sql = 'INSERT INTO message (sender_id, receiver_id, message, timestamp) VALUES ($1::integer, $2::integer, $3::text, now());';
-	values = [req.session.userid, req.session.contactid, req.body.message];
+	sql = 'UPDATE message SET message = $1::text WHERE id = $2::integer;';
+	values = [req.message, req.messageId];
 	pool.query(sql, values, function(err, data) {
 		if (err) {
 			console.log(err);
-			res.status(500).send("Error: There was a problem sending your message.");
+			res.status(500).send("Error: There was a problem updating your message.");
 		} else {
 			sql = 'SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $1::integer AND receiver_id = $2::integer UNION SELECT message.id, sender_id, receiver_id, message, timestamp FROM message WHERE sender_id = $2::integer AND receiver_id = $1::integer ORDER BY timestamp;'; 
 			values = [req.session.userid, req.session.contactid];
