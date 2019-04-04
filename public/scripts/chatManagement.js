@@ -98,7 +98,7 @@ $('#sendMessage').submit(function(event) {
 //callback function for a successful response - notice the order of the parameters
 function sendMessageComplete(res, status, jqXHR) {
 	$('.error').html('');
-
+	console.log(rows);
 	var listInnerHTML = '';
 	res['data'].forEach(function(rows) {
 		if (rows.sender_id == parseInt(res['userid'])) {
