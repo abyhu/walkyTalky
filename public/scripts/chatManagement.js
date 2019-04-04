@@ -81,20 +81,15 @@ function selectConversationFailed(jqXHR, status, res) {
 	$('.error').html(jqXHR.responseText);
 }
 
-//$('#sendMessage').submit(function(event) {
-//	//this prevents the POST default action
-//	event.preventDefault();
-//
-//	//establish variables
-//	var message = $('#messageText').val(); 
-//
-//	//call the POST action manually to connect with the nodeJS functions
-//	$.post('/sendMessage', { message: message }) 
-//			//because there is a response on success and failure setup two callbacks
-//		  .done(sendMessageComplete)
-//		  .fail(sendMessageFailed)		
-//});
-//
+$('#selectConversation').click(function(event) {
+	//this prevents the POST default action
+	event.preventDefault();
+
+	//populate the send message input with the value of the last message sent by the user
+	var message = $('.user:last-of-type').val();
+	$('#messageText').val(message); 	
+});
+
 ////callback function for a successful response - notice the order of the parameters
 //function sendMessageComplete(res, status, jqXHR) {
 //	$('.error').html('');
