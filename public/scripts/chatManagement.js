@@ -79,6 +79,11 @@ function selectConversationComplete(res, status, jqXHR) {
 	$('#messageList').html(listInnerHTML);
 }
 
+//callback function for a failed response - notice the change in the parameter order
+function selectConversationFailed(jqXHR, status, res) {
+	$('.error').html(jqXHR.responseText);
+}
+
 $('#sendMessage').submit(function(event) {
 	//this prevents the POST default action
 	event.preventDefault();
