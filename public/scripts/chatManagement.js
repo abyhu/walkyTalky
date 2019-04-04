@@ -71,9 +71,9 @@ function selectConversationComplete(res, status, jqXHR) {
 	var listInnerHTML='';
 	res['data'].forEach(function(rows) {
 		if (rows.sender_id == parseInt(res['userid'])) {
-			listInnerHTML += '<p class="user" id="' + rows.id + '">' + res['username'] + ':<br><span class="userMessage">' + rows.message + '</span></>';  
+			listInnerHTML += '<p class="user"' + res['username'] + ':<br><span class="userMessage"> id="' + rows.id + '">' + rows.message + '</span></>';  
 		} else { 
-			listInnerHTML += '<p class="contact" id="' + rows.id + '">' + res['contactusername'] + ':<br><span>' + rows.message + '</span></>';
+			listInnerHTML += '<p class="contact"' + res['contactusername'] + ':<br><span>' + rows.message + '</span></>';
 		}
 	});
 	$('#messageList').html(listInnerHTML);
@@ -93,7 +93,7 @@ $('#sendMessage').submit(function(event) {
 
 	//call the POST action manually to connect with the nodeJS functions
 	if (editingMessage) {
-		$.post('/editMessage', { message: message }) 
+		$.post('/editMessage', { message: message, messageId: messageId }) 
 			//because there is a response on success and failure setup two callbacks
 		  .done(sendMessageComplete)
 		  .fail(sendMessageFailed)
