@@ -82,11 +82,9 @@ function selectConversationFailed(jqXHR, status, res) {
 }
 
 $('#editMessage').click(function(event) {
-	//this prevents the POST default action
-	console.log("clicked Edit Message");
-
 	//populate the send message input with the value of the last message sent by the user
-	var message = $('#messageList :last-child').val();
+	var message = $('#messageList:last-child').val();
+	console.log(message);
 	$('#messageText').val(message); 	
 });
 
