@@ -81,7 +81,7 @@ function selectConversationFailed(jqXHR, status, res) {
 	$('.error').html(jqXHR.responseText);
 }
 
-$('#selectConversation').click(function(event) {
+$('#editMessage').click(function(event) {
 	//this prevents the POST default action
 	event.preventDefault();
 
