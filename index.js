@@ -64,6 +64,6 @@ app.post('/deleteMessage', isAuthenticated, urlencodedParser, chatManagementMode
 
 app.get('/logout', loginModel.logout);
 
-io.on('connection', client => { console.log(‘a user is connected’) });
+io.on(‘connection’, () =>{ console.log(‘a user is connected’) });
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
