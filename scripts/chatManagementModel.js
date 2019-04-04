@@ -66,8 +66,12 @@ function insertMessage (req, res) {
 }
 
 function updateMessage (req, res) {
+	var message = req.body.message;
+	var messageId = req.body.messageId;
+	console.log(message);
+	console.log(messageId);
 	sql = 'UPDATE message SET message = $1::text WHERE id = $2::integer;';
-	values = [req.body.message, req.body.messageId];
+	values = [message, messageId];
 	pool.query(sql, values, function(err, data) {
 		if (err) {
 			console.log(err);
