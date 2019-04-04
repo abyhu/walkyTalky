@@ -84,6 +84,7 @@ function updateMessage (req, res) {
 					console.log(err);
 					res.status(500).send("Error: There was a problem receiving new messages.");
 				} else {
+					console.log(data);
 					res.status(200).send({contactusername: req.session.contactusername, userid: req.session.userid, username: req.session.username, data: data.rows});
 				}
 			});
