@@ -99,5 +99,15 @@
 		<script src="/scripts/contactManagement.js"></script>
 		<script src="/scripts/chatManagement.js"></script>
 		<script src=”/socket.io/socket.io.js”></script>
+		<script>
+		  var socket = io();
+		  socket.on('connect', function(data) {
+			socket.emit('joined', 'Hello World from client');
+		 });
+			
+			socket.on('acknowledge', function(data) {
+        alert(data);
+    });
+		</script>
 	</body>
 </html>
