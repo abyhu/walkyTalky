@@ -85,6 +85,7 @@ function selectConversationFailed(jqXHR, status, res) {
 }
 
 $('#sendMessage').submit(function(event) {
+	var socket = io();
 	//this prevents the POST default action
 	event.preventDefault();
 
@@ -97,7 +98,6 @@ $('#sendMessage').submit(function(event) {
 			//because there is a response on success and failure setup two callbacks
 		  .done(sendMessageComplete)
 		  .fail(sendMessageFailed)
-		
 	} else {
 		$.post('/sendMessage', { message: message }) 
 			//because there is a response on success and failure setup two callbacks

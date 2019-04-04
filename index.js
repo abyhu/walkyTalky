@@ -1,6 +1,8 @@
 //include libraries and setup express and port
 const express = require('express');
 const app = express(); 
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 var session = require('express-session');
@@ -62,5 +64,6 @@ app.post('/deleteMessage', isAuthenticated, urlencodedParser, chatManagementMode
 
 app.get('/logout', loginModel.logout);
 
+io.on('connection', client => { console.log(‘a user is connected’) });
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
