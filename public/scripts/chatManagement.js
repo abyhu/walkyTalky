@@ -73,7 +73,7 @@ function selectConversationComplete(res, status, jqXHR) {
 		if (rows.sender_id == parseInt(res['userid'])) {
 			listInnerHTML += '<p class="user">' + res['username'] + ':<br><span class="userMessage" id="' + rows.id + '">' + rows.message + '</span></>';  
 		}else { 
-			listInnerHTML += '<p class="contact">' + res['contactname'] + ':<br><span class="userMessage" id="' + rows.id + '">' + rows.message + '</span></>';
+			listInnerHTML += '<p class="contact">' + res['contactusername'] + ':<br><span class="userMessage" id="' + rows.id + '">' + rows.message + '</span></>';
 		}
 	});
 	$('#messageList').html(listInnerHTML);
@@ -117,7 +117,7 @@ function sendMessageComplete(res, status, jqXHR) {
 		if (rows.sender_id == parseInt(res['userid'])) {
 			listInnerHTML += '<p class="user"' + res['username'] + ':<br><span class="userMessage" id="' + rows.id + '">' + rows.message + '</span></>';  
 		}else { 
-			listInnerHTML += '<p class="contact"' + res['contactname'] + ':<br><span class="userMessage" id="' + rows.id + '">' + rows.message + '</span></>';
+			listInnerHTML += '<p class="contact"' + res['contactusername'] + ':<br><span class="userMessage" id="' + rows.id + '">' + rows.message + '</span></>';
 		}
 	});
 	$('#messageList').html(listInnerHTML);
